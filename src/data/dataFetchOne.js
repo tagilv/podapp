@@ -1,4 +1,4 @@
-let data = {
+let dataFetchOne = {
   curated_lists: [
     {
       id: "MQXovWpwNfc",
@@ -1790,4 +1790,4 @@ let data = {
   next_page_number: 2,
 };
 
-export { data };
+export { dataFetchOne };

@@ -1,4 +1,4 @@
-let data2 = {
+let dataFetchTwo = {
   id: "4d3fe717742d4963a85562e9f84d8c79",
   title: "Star Wars 7x7: The Daily Star Wars Podcast",
   publisher: "Star Wars 7x7",
@@ -294,4 +294,4 @@ let data2 = {
   next_episode_pub_date: 1666681200000,
 };
 
-export { data2 };
+export { dataFetchTwo };

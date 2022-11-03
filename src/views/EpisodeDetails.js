@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
-import { data2 } from "../data/data2.js";
+import { dataFetchTwo } from "../data/dataFetchTwo.js";
 import Episode from "../components/Episode";
 
-function IndividualCollectionDetails() {
+function EpisodeDetails() {
   let params = useParams();
 
   const location = useLocation();
@@ -12,7 +12,7 @@ function IndividualCollectionDetails() {
   let individualPodcastId = location.state.podcastId;
   console.log("individualPocastId>>", individualPodcastId);
 
-  console.log("data2>>", data2.episodes);
+  // console.log("dataFetchTwo>>", dataFetchTwo.episodes);
 
   // Use individualPocastId to fetch episodes and render this episodes in episodes component
   // State is always in the scope of the component
@@ -24,7 +24,7 @@ function IndividualCollectionDetails() {
       const url = `https://jsonplaceholder.typicode.com/users`;
       const response = await fetch(url);
       const result = await response.json();
-      setEpisodes(data2.episodes);
+      setEpisodes(dataFetchTwo.episodes);
     } catch (error) {
       console.log(error);
     }
@@ -36,7 +36,7 @@ function IndividualCollectionDetails() {
 
   return (
     <div>
-      <h2>IndividualCollectionDetails here</h2>
+      <h2>EpisodeDetails here</h2>
       {episodes.map((episode) => {
         return <Episode key={episode.id} episode={episode} />;
       })}
@@ -44,7 +44,7 @@ function IndividualCollectionDetails() {
   );
 }
 
-export default IndividualCollectionDetails;
+export default EpisodeDetails;
 
 // async function nameOfFunc() {
 

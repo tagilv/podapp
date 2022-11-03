@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { data } from "../data/data.js";
+import { dataFetchOne } from "../data/dataFetchOne.js";
 import Collection from "../components/Collection.js";
 
 // Add before live fetch:
@@ -26,9 +26,10 @@ function Collections() {
       const url = "https://jsonplaceholder.typicode.com/users";
       const response = await fetch(url);
       const result = await response.json();
-      setCollections(data.curated_lists);
+      setCollections(dataFetchOne.curated_lists);
 
-      console.log("async results", data.curated_lists);
+      console.log("async results", dataFetchOne.curated_lists);
+      console.log("dataFetchOne", dataFetchOne);
     } catch (error) {
       console.log(error);
     }
