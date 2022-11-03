@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 function Podcast({ podcast }) {
   return (
     <div>
-      <Link to={`${podcast.title}`} state={{ podcast: podcast }}>
+      <Link to={`${podcast.title}`} state={{ podcastId: podcast.id }}>
         <h2>{podcast.title}</h2>
       </Link>
       <img src={podcast.thumbnail} alt="" />
