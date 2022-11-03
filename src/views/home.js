@@ -1,7 +1,13 @@
 import React from "react";
+import Collections from "./Collections";
 
-function home() {
-  return <div>home</div>;
+function Home() {
+  return (
+    <div>
+      <h2>Home here</h2>
+      {/* <Collections /> */}
+    </div>
+  );
 }
 
-export default home;
+export default Home;

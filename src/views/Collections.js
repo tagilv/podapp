@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { data } from "../data/data.js";
-import Collection from "./Collection.js";
+import Collection from "../components/Collection.js";
 
 // Add before live fetch:
 // 1.
@@ -20,20 +20,6 @@ import Collection from "./Collection.js";
 function Collections() {
   const [collections, setCollections] = useState([]);
   const [error, setError] = useState(null);
-
-  // const fetchCollections = () => {
-  //   // const url = data;
-  //   fetch("https://jsonplaceholder.typicode.com/users")
-  //     .then((response) => response.json())
-  //     .then((result) => {
-  //       setCollections(data.curated_lists);
-  //       console.log(data.curated_lists);
-  //     })
-  //     .catch((error) => {
-  //       setError(error.message);
-  //       console.log(error);
-  //     });
-  // };
 
   const fetchCollectionsAsync = async () => {
     try {
@@ -55,7 +41,7 @@ function Collections() {
 
   return (
     <div>
-      <h2>Collections</h2>
+      <h2>Collections here</h2>
       {collections ? (
         collections.map((collection) => {
           return <Collection key={collection.id} collection={collection} />;
