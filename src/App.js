@@ -5,6 +5,10 @@ import Home from "./views/Home";
 import Contact from "./views/Contact";
 import Navbar from "./components/Navbar";
 import NoMatch from "./views/NoMatch";
+import CollectionDetails from "./views/CollectionDetails";
+import IndividualCollectionDetails from "./views/IndividualCollectionDetails";
+
+// In routes, you need to use the :title as it is in the api? No you dont but should you?
 
 function App() {
   const myStyle = {
@@ -19,6 +23,12 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="collections" element={<Collections />} />
+        <Route path="/collections/:title" element={<CollectionDetails />} />
+        {/* // new */}
+        <Route
+          path="/collections/:title/:podcast"
+          element={<IndividualCollectionDetails />}
+        />
         <Route path="contact" element={<Contact />} />
         <Route path="*" element={<NoMatch />} />
       </Routes>
