@@ -3,7 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { dataFetchTwo } from "../data/dataFetchTwo.js";
 import Episode from "../components/Episode";
 
-function EpisodeDetails() {
+function CollectionEpisodeDetails() {
   let params = useParams();
 
   const location = useLocation();
@@ -13,7 +13,6 @@ function EpisodeDetails() {
   console.log("individualPocastId>>", individualPodcastId);
 
   // console.log("dataFetchTwo>>", dataFetchTwo.episodes);
-
   // Use individualPocastId to fetch episodes and render this episodes in episodes component
   // State is always in the scope of the component
 
@@ -29,6 +28,7 @@ function EpisodeDetails() {
       console.log(error);
     }
   };
+  console.log("dataFetchTwo.episodes>>", dataFetchTwo.episodes);
 
   useEffect(() => {
     fetchEpisodes();
@@ -36,7 +36,7 @@ function EpisodeDetails() {
 
   return (
     <div>
-      <h2>EpisodeDetails here</h2>
+      <h2>CollectionEpisodeDetails view here</h2>
       {episodes.map((episode) => {
         return <Episode key={episode.id} episode={episode} />;
       })}
@@ -44,12 +44,4 @@ function EpisodeDetails() {
   );
 }
 
-export default EpisodeDetails;
-
-// async function nameOfFunc() {
-
-// }
-
-// const nameOfFunc = async () => {
-
-// }
+export default CollectionEpisodeDetails;

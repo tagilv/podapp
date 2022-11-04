@@ -2,14 +2,8 @@ import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Podcast from "../components/Podcast";
 
-function CollectionDetails() {
+function CollectionPodcastsDetails() {
   let params = useParams();
-
-  // let {
-  //   state: {
-  //     collection: { podcasts },
-  //   },
-  // } = useLocation();
 
   const location = useLocation();
   console.log("location", location);
@@ -18,9 +12,11 @@ function CollectionDetails() {
 
   return (
     <div>
+      <h2>CollectionPodcastsDetails view here:</h2>
+
       <h2>Details page about {params.title}</h2>
 
-      <h2>List of podcasts here</h2>
+      <h2>Podcast Componants here:</h2>
       {podcastArray.map((podcast) => {
         return <Podcast key={podcast.id} podcast={podcast} />;
       })}
@@ -28,4 +24,11 @@ function CollectionDetails() {
   );
 }
 
-export default CollectionDetails;
+export default CollectionPodcastsDetails;
+
+//Could go on line 8
+// let {
+//   state: {
+//     collection: { podcasts },
+//   },
+// } = useLocation();

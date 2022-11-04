@@ -5,8 +5,8 @@ import Home from "./views/Home";
 import Contact from "./views/Contact";
 import Navbar from "./components/Navbar";
 import NoMatch from "./views/NoMatch";
-import CollectionDetails from "./views/CollectionDetails";
-import EpisodeDetails from "./views/EpisodeDetails";
+import CollectionPodcastsDetails from "./views/CollectionPodcastsDetails";
+import CollectionEpisodeDetails from "./views/CollectionEpisodeDetails";
 
 // In routes, you need to use the :title as it is in the api? No you dont but should you?
 
@@ -18,16 +18,19 @@ function App() {
 
   return (
     <div className="App">
-      <h2 className="my-style">App</h2>
+      <h2 className="my-style"></h2>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="collections" element={<Collections />} />
-        <Route path="/collections/:title" element={<CollectionDetails />} />
+        <Route
+          path="/collections/:title"
+          element={<CollectionPodcastsDetails />}
+        />
         {/* // new */}
         <Route
           path="/collections/:title/:podcast"
-          element={<EpisodeDetails />}
+          element={<CollectionEpisodeDetails />}
         />
         <Route path="contact" element={<Contact />} />
         <Route path="*" element={<NoMatch />} />

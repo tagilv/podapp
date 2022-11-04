@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 function Collection({ collection }) {
   return (
     <div>
+      <h2>Collection Componant:</h2>
       <h2>{collection.title}</h2>
       <Link to={`${collection.title}`} state={{ collection: collection }}>
         {collection.title}
