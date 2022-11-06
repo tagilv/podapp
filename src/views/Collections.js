@@ -46,6 +46,14 @@ function Collections() {
       <button
         type=""
         onClick={() => {
+          setPage(page - 1);
+        }}
+      >
+        Previous Page
+      </button>
+      <button
+        type=""
+        onClick={() => {
           setPage(page + 1);
         }}
       >
