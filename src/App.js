@@ -2,7 +2,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Collections from "./views/Collections";
 import Home from "./views/Home";
-import Contact from "./views/Contact";
+import Profile from "./views/Profile";
 import Navbar from "./components/Navbar";
 import NoMatch from "./views/NoMatch";
 import CollectionPodcastsDetails from "./views/CollectionPodcastsDetails";
@@ -39,7 +39,14 @@ function App() {
               </ProtectedRoute>
             }
           />
-          <Route path="contact" element={<Contact />} />
+          <Route
+            path="profile"
+            element={
+              <ProtectedRoute>
+                <Profile />
+              </ProtectedRoute>
+            }
+          />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </AuthContextProvider>

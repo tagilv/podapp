@@ -28,7 +28,7 @@ function Navbar() {
       >
         <h2>This is my navbar</h2>
         <Link to="/">Home</Link> | <Link to="/collections">Collections</Link> |{" "}
-        <Link to="/contact">Contact</Link>
+        <Link to="/profile">Profile</Link>
         {user ? (
           <Button variant="danger" onClick={Logout}>
             Logout
