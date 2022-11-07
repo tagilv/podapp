@@ -1,13 +1,22 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
-
-const getSearch = (input) => {
-  console.log(input);
-};
+import { Button } from "@mui/material";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function Navbar() {
-  // const location = useLocation();
-  // console.log("location", location);
+  const { user, setUser } = useContext(AuthContext);
+
+  const Login = () => {
+    setUser({
+      userName: "Viktor",
+    });
+    console.log(`user ${user?.userName} logged in`);
+  };
+
+  const Logout = () => {
+    setUser(null);
+    console.log(`user logged out`);
+  };
 
   return (
     <>
@@ -20,16 +29,21 @@ function Navbar() {
         <h2>This is my navbar</h2>
         <Link to="/">Home</Link> | <Link to="/collections">Collections</Link> |{" "}
         <Link to="/contact">Contact</Link>
-        <h2>Search here</h2>
-        <input
-          type="text"
-          id="myInput"
-          onChange={(e) => getSearch(e.target.value)}
-          placeholder="Search Playlists.."
-        ></input>
+        {user ? (
+          <Button variant="danger" onClick={Logout}>
+            Logout
+          </Button>
+        ) : (
+          <Button variant="contained" onClick={Login}>
+            Login
+          </Button>
+        )}
       </nav>
     </>
   );
 }
 
 export default Navbar;
+
+// const location = useLocation();
+// console.log("location", location);

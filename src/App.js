@@ -7,6 +7,8 @@ import Navbar from "./components/Navbar";
 import NoMatch from "./views/NoMatch";
 import CollectionPodcastsDetails from "./views/CollectionPodcastsDetails";
 import CollectionEpisodeDetails from "./views/CollectionEpisodeDetails";
+import { AuthContextProvider } from "./context/AuthContext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 // In routes, you need to use the :title as it is in the api? No you dont but should you?
 
@@ -19,23 +21,28 @@ function App() {
   return (
     <div className="App">
       <h2 className="my-style"></h2>
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="collections" element={<Collections />} />
-        <Route
-          path="/collections/:title"
-          element={<CollectionPodcastsDetails />}
-        />
-        {/* // new */}
-        <Route
-          path="/collections/:title/:podcast"
-          element={<CollectionEpisodeDetails />}
-        />
-        <Route path="contact" element={<Contact />} />
-        <Route path="*" element={<NoMatch />} />
-      </Routes>
-      {/* <Collections /> */}
+      <AuthContextProvider>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="collections" element={<Collections />} />
+
+          <Route
+            path="/collections/:title"
+            element={<CollectionPodcastsDetails />}
+          />
+          <Route
+            path="/collections/:title/:podcast"
+            element={
+              <ProtectedRoute>
+                <CollectionEpisodeDetails />
+              </ProtectedRoute>
+            }
+          />
+          <Route path="contact" element={<Contact />} />
+          <Route path="*" element={<NoMatch />} />
+        </Routes>
+      </AuthContextProvider>
     </div>
   );
 }
