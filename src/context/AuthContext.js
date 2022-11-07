@@ -10,6 +10,7 @@ export const AuthContextProvider = (props) => {
   const [user, setUser] = useState({});
 
   return (
+    // Two {{}} to send tan object, thats why we need {} when receiveng them in the useContext too
     <AuthContext.Provider value={{ user, setUser }}>
       {props.children}
     </AuthContext.Provider>

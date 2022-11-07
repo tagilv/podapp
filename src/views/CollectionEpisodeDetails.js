@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams, useLocation } from "react-router-dom";
 import { dataFetchTwo } from "../data/dataFetchTwo.js";
 import Episode from "../components/Episode";
+import { Container } from "@mui/material";
 
 function CollectionEpisodeDetails() {
   let params = useParams();
@@ -36,10 +37,12 @@ function CollectionEpisodeDetails() {
 
   return (
     <div>
-      <h2>CollectionEpisodeDetails view here</h2>
-      {episodes.map((episode) => {
-        return <Episode key={episode.id} episode={episode} />;
-      })}
+      <Container>
+        <h2>CollectionEpisodeDetails view here</h2>
+        {episodes.map((episode) => {
+          return <Episode key={episode.id} episode={episode} />;
+        })}
+      </Container>
     </div>
   );
 }

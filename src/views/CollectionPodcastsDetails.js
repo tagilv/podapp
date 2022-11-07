@@ -1,6 +1,8 @@
 import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Podcast from "../components/Podcast";
+import { Grid } from "@mui/material";
+import { Container } from "@mui/system";
 
 function CollectionPodcastsDetails() {
   let params = useParams();
@@ -12,14 +14,14 @@ function CollectionPodcastsDetails() {
 
   return (
     <div>
-      <h2>CollectionPodcastsDetails view here:</h2>
-
-      <h2>Details page about {params.title}</h2>
-
-      <h2>Podcast Componants here:</h2>
-      {podcastArray.map((podcast) => {
-        return <Podcast key={podcast.id} podcast={podcast} />;
-      })}
+      <Container>
+        <h2>{params.title}</h2>
+        <Grid container spacing={3}>
+          {podcastArray.map((podcast) => {
+            return <Podcast key={podcast.id} podcast={podcast} />;
+          })}
+        </Grid>
+      </Container>
     </div>
   );
 }

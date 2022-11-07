@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { dataFetchOne } from "../data/dataFetchOne.js";
 import Collection from "../components/Collection.js";
+import { Grid, Typography } from "@mui/material";
+import { Container } from "@mui/system";
 
 function Collections() {
   const [collections, setCollections] = useState([]);
@@ -33,32 +35,40 @@ function Collections() {
 
   return (
     <div>
-      <h2>Collections view here:</h2>
-      {collections ? (
-        collections.map((collection) => {
-          return <Collection key={collection.id} collection={collection} />;
-        })
-      ) : (
-        <p>No collections</p>
-      )}
-      {error && <p>{error}</p>}
+      <Container>
+        <Typography variant="h6">
+          This week's curated List of Podcasts!
+        </Typography>
+        {collections ? (
+          <Grid container spacing={2}>
+            {collections.map((collection) => {
+              return <Collection key={collection.id} collection={collection} />;
+            })}
+          </Grid>
+        ) : (
+          <p>No collections</p>
+        )}
+        {error && <p>{error}</p>}
 
-      <button
-        type=""
-        onClick={() => {
-          setPage(page - 1);
-        }}
-      >
-        Previous Page
-      </button>
-      <button
-        type=""
-        onClick={() => {
-          setPage(page + 1);
-        }}
-      >
-        Next Page
-      </button>
+        {page !== 0 && (
+          <button
+            type=""
+            onClick={() => {
+              setPage(page - 1);
+            }}
+          >
+            Previous Page
+          </button>
+        )}
+        <button
+          type=""
+          onClick={() => {
+            setPage(page + 1);
+          }}
+        >
+          Next Page
+        </button>
+      </Container>
     </div>
   );
 }

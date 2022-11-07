@@ -26,7 +26,6 @@ function Navbar() {
           paddingBottom: "1rem",
         }}
       >
-        <h2>This is my navbar</h2>
         <Link to="/">Home</Link> | <Link to="/collections">Collections</Link> |{" "}
         <Link to="/profile">Profile</Link>
         {user ? (
