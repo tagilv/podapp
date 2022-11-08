@@ -39,8 +39,3 @@ function Podcast({ podcast }) {
 }
 
 export default Podcast;
-
-// <Link to={`${podcast.title}`} state={{ podcastId: podcast.id }}>
-//   <h2>{podcast.title}</h2>
-// </Link>
-// <img src={podcast.thumbnail} alt="" />

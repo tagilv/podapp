@@ -8,7 +8,6 @@ function CollectionEpisodeDetails() {
   let params = useParams();
 
   const location = useLocation();
-  console.log("location", location);
 
   let individualPodcastId = location.state.podcastId;
   console.log("individualPocastId>>", individualPodcastId);

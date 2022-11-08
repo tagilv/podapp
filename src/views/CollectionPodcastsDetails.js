@@ -8,7 +8,6 @@ function CollectionPodcastsDetails() {
   let params = useParams();
 
   const location = useLocation();
-  console.log("location", location);
 
   let podcastArray = location.state.collection.podcasts;
 

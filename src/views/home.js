@@ -1,10 +1,10 @@
 import React from "react";
-import Collections from "./Collections";
 
 function Home() {
   return (
     <div>
-      <h2>Welcome to the Home page</h2>
+      <h2>Explore curated Podcast Collections from XX</h2>
+      <button type="text">Start now</button>
     </div>
   );
 }

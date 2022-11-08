@@ -1,10 +1,13 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
+import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
 function Navbar() {
   const { user, setUser } = useContext(AuthContext);
+
+  const location = useLocation();
 
   const Login = () => {
     setUser({
@@ -18,31 +21,34 @@ function Navbar() {
     console.log(`user logged out`);
   };
 
+  const hideNav = () => {
+    console.log(location);
+  };
+
   return (
     <>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/">Home</Link> | <Link to="/collections">Collections</Link> |{" "}
-        <Link to="/profile">Profile</Link>
-        {user ? (
-          <Button variant="danger" onClick={Logout}>
-            Logout
-          </Button>
-        ) : (
-          <Button variant="contained" onClick={Login}>
-            Login
-          </Button>
-        )}
-      </nav>
+      {location.pathname !== "/" ? (
+        <nav
+          style={{
+            borderBottom: "solid 1px",
+            paddingBottom: "1rem",
+          }}
+        >
+          <Link to="/">Home</Link> | <Link to="/collections">Collections</Link>{" "}
+          | <Link to="/profile">Profile</Link>
+          {user ? (
+            <Button variant="danger" onClick={Logout}>
+              Logout
+            </Button>
+          ) : (
+            <Button variant="contained" onClick={Login}>
+              Login
+            </Button>
+          )}
+        </nav>
+      ) : null}
     </>
   );
 }
 
 export default Navbar;
-
-// const location = useLocation();
-// console.log("location", location);

@@ -16,7 +16,6 @@ function Collections() {
       // const url = `https://jsonplaceholder.typicode.com/users/${page}`;
       const response = await fetch(url);
       const result = await response.json();
-      console.log(result);
       setCollections(dataFetchOne.curated_lists);
       // setPage(result);
 
@@ -30,8 +29,6 @@ function Collections() {
     fetchCollectionsAsync();
     // fetchCollections();
   }, [page]);
-
-  // put page
 
   return (
     <div>
