@@ -3,6 +3,7 @@ import { dataFetchOne } from "../data/dataFetchOne.js";
 import Collection from "../components/Collection.js";
 import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
+import Hero from "../components/Hero.js";
 
 function Collections() {
   const [collections, setCollections] = useState([]);
@@ -33,8 +34,9 @@ function Collections() {
   return (
     <div>
       <Container>
+        <Hero />
         <Typography variant="h6">
-          This week's curated List of Podcasts!
+          {/* This week's curated List of Podcasts! */}
         </Typography>
         {collections ? (
           <Grid container spacing={2}>

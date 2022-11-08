@@ -1,0 +1,6 @@
+#backgroundimage {
+  height: auto;
+  width: 70%;
+  display: flex;
+  justify-content: space-around;
+}

@@ -4,7 +4,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 
-function Navbar() {
+function TopNavbar() {
   const { user, setUser } = useContext(AuthContext);
 
   const location = useLocation();
@@ -27,19 +27,25 @@ function Navbar() {
 
   return (
     <>
-      {location.pathname !== "/" ? (
-        <nav
-          style={{
-            borderBottom: "solid 1px",
-            paddingBottom: "1rem",
-          }}
-        >
-          <Link to="/">Home</Link> | <Link to="/collections">Collections</Link>{" "}
-          | <Link to="/profile">Profile</Link>
-        </nav>
-      ) : null}
+      <nav
+        style={{
+          borderBottom: "solid 1px",
+          paddingBottom: "1rem",
+        }}
+      >
+        <Link to="/profile">Profile</Link>
+        {user ? (
+          <Button variant="danger" onClick={Logout}>
+            Logout
+          </Button>
+        ) : (
+          <Button variant="contained" onClick={Login}>
+            Login
+          </Button>
+        )}
+      </nav>
     </>
   );
 }
 
-export default Navbar;
+export default TopNavbar;

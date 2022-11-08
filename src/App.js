@@ -9,6 +9,7 @@ import CollectionPodcastsDetails from "./views/CollectionPodcastsDetails";
 import CollectionEpisodeDetails from "./views/CollectionEpisodeDetails";
 import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
+import TopNavbar from "./components/TopNavbar";
 
 // In routes, you need to use the :title as it is in the api? No you dont but should you?
 
@@ -22,7 +23,7 @@ function App() {
     <div className="App">
       <h2 className="my-style"></h2>
       <AuthContextProvider>
-        <Navbar />
+        <TopNavbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="collections" element={<Collections />} />
@@ -49,6 +50,7 @@ function App() {
           />
           <Route path="*" element={<NoMatch />} />
         </Routes>
+        <Navbar />
       </AuthContextProvider>
     </div>
   );

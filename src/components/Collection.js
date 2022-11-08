@@ -15,6 +15,9 @@ const sxCollectionStyle = {
   fontSize: 15,
   display: "flex",
   justifyContent: "end",
+  maxHeight: 45,
+  minHeight: 45,
+  alignItems: "center",
 };
 
 function Collection({ collection }) {
@@ -26,6 +29,7 @@ function Collection({ collection }) {
             borderRadius: 10,
           }}
           elevation={2}
+          max
         >
           <CardContent sx={sxCollectionStyle}>
             <div>
