@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import style from "../style/style.css";
 
 function Navbar() {
   const { user, setUser } = useContext(AuthContext);
@@ -28,14 +29,9 @@ function Navbar() {
   return (
     <>
       {location.pathname !== "/" ? (
-        <nav
-          style={{
-            borderBottom: "solid 1px",
-            paddingBottom: "1rem",
-          }}
-        >
-          <Link to="/">Home</Link> | <Link to="/collections">Collections</Link>{" "}
-          | <Link to="/profile">Profile</Link>
+        <nav className="bottomnav">
+          <Link to="/">Home</Link> <Link to="/collections">Collections</Link>{" "}
+          <Link to="/profile">Profile</Link>
         </nav>
       ) : null}
     </>

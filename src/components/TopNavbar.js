@@ -3,6 +3,7 @@ import React, { useContext } from "react";
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import style from "../style/style.css";
 
 function TopNavbar() {
   const { user, setUser } = useContext(AuthContext);
@@ -27,13 +28,7 @@ function TopNavbar() {
 
   return (
     <>
-      <nav
-        style={{
-          borderBottom: "solid 1px",
-          paddingBottom: "1rem",
-        }}
-      >
-        <Link to="/profile">Profile</Link>
+      <nav className="topnav">
         {user ? (
           <Button variant="danger" onClick={Logout}>
             Logout
@@ -43,6 +38,7 @@ function TopNavbar() {
             Login
           </Button>
         )}
+        <Link to="/profile">Profile</Link>
       </nav>
     </>
   );

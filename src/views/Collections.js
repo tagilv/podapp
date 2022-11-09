@@ -49,24 +49,26 @@ function Collections() {
         )}
         {error && <p>{error}</p>}
 
-        {page !== 0 && (
+        <Container>
+          {page !== 0 && (
+            <button
+              type=""
+              onClick={() => {
+                setPage(page - 1);
+              }}
+            >
+              Previous Page
+            </button>
+          )}
           <button
             type=""
             onClick={() => {
-              setPage(page - 1);
+              setPage(page + 1);
             }}
           >
-            Previous Page
+            Next Page
           </button>
-        )}
-        <button
-          type=""
-          onClick={() => {
-            setPage(page + 1);
-          }}
-        >
-          Next Page
-        </button>
+        </Container>
       </Container>
     </div>
   );

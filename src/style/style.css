@@ -4,3 +4,29 @@
   display: flex;
   justify-content: space-around;
 }
+
+/* TopNavbar */
+nav.topnav {
+  border-bottom: "solid 1px";
+  padding-bottom: "1rem";
+  background-color: antiquewhite;
+  position: sticky;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+}
+
+/* Navigation: */
+nav.bottomnav {
+  border-bottom: "solid 1px";
+  padding-bottom: "1rem";
+  background-color: antiquewhite;
+  position: sticky;
+  bottom: 0px;
+  width: 100%;
+  z-index: 1;
+  height: 5vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

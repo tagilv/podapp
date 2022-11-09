@@ -8,7 +8,7 @@ function ProtectedRoute({ children }) {
   // Create the rule for what to show the user:
   const isAuthenticated = user ? true : false;
 
-  return <>{isAuthenticated ? children : <Navigate to="/" />}</>;
+  return <>{isAuthenticated ? children : <Navigate to="/login" />}</>;
 }
 
 export default ProtectedRoute;
