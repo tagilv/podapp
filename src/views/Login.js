@@ -3,11 +3,20 @@ import React from "react";
 
 function Login() {
   return (
-    <div>
-      <Container maxWidth="sm">
-        <h2>Welcome to the Login page</h2>
-      </Container>
-    </div>
+    <>
+      <div>
+        <Container maxWidth="sm">
+          <h2>Log in</h2>
+          <div>
+            <label for="email"></label>
+            <input type="text" name="email" />
+            <label for="password"></label>
+            <input type="text" name="password" />
+            <button type="submit">Login</button>
+          </div>
+        </Container>
+      </div>
+    </>
   );
 }
 

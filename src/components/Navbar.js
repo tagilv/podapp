@@ -1,6 +1,6 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import style from "../style/style.css";
@@ -30,8 +30,9 @@ function Navbar() {
     <>
       {location.pathname !== "/" ? (
         <nav className="bottomnav">
-          <Link to="/">Home</Link> <Link to="/collections">Collections</Link>{" "}
-          <Link to="/profile">Profile</Link>
+          <NavLink to="/">Home</NavLink>{" "}
+          <NavLink to="/collections">Collections</NavLink>{" "}
+          <NavLink to="/profile">Profile</NavLink>
         </nav>
       ) : null}
     </>
@@ -39,3 +40,10 @@ function Navbar() {
 }
 
 export default Navbar;
+
+// <NavLink
+//   style={({ isActive }) => {
+//     return isActive ? { color: "green" } : {};
+//   }}
+//   to="/collections"
+// ></NavLink>;

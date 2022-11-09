@@ -21,7 +21,7 @@ nav.bottomnav {
   border-bottom: "solid 1px";
   padding-bottom: "1rem";
   background-color: antiquewhite;
-  position: sticky;
+  position: fixed;
   bottom: 0px;
   width: 100%;
   z-index: 1;
@@ -29,4 +29,8 @@ nav.bottomnav {
   display: flex;
   justify-content: space-around;
   align-items: center;
+}
+
+.active {
+  color: green;
 }
