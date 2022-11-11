@@ -14,16 +14,16 @@ function Navbar() {
     setUser({
       userName: "Viktor",
     });
-    console.log(`user ${user?.userName} logged in`);
+    // console.log(`user ${user?.userName} logged in`);
   };
 
   const Logout = () => {
     setUser(null);
-    console.log(`user logged out`);
+    // console.log(`user logged out`);
   };
 
   const hideNav = () => {
-    console.log(location);
+    // console.log(location);
   };
 
   return (

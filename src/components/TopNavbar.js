@@ -6,39 +6,40 @@ import { AuthContext } from "../context/AuthContext";
 import style from "../style/style.css";
 
 function TopNavbar() {
-  const { user, setUser } = useContext(AuthContext);
+  const { user, setUser, login, logout } = useContext(AuthContext);
 
   const location = useLocation();
 
-  const Login = () => {
-    setUser({
-      userName: "Viktor",
-    });
-    console.log(`user ${user?.userName} logged in`);
-  };
+  // const Login = () => {
+  //   setUser({
+  //     userName: "Viktor",
+  //   });
+  //   console.log(`user ${user?.userName} logged in`);
+  // };
 
-  const Logout = () => {
-    setUser(null);
-    console.log(`user logged out`);
-  };
+  // const Logout = () => {
+  //   setUser(null);
+  //   console.log(`user logged out`);
+  // };
 
   const hideNav = () => {
-    console.log(location);
+    // console.log(location);
   };
 
   return (
     <>
       <nav className="topnav">
         {user ? (
-          <Button variant="danger" onClick={Logout}>
+          <Button variant="danger" onClick={logout}>
             Logout
           </Button>
         ) : (
-          <Button variant="contained" onClick={Login}>
+          <Button variant="contained" onClick={login}>
             Login
           </Button>
         )}
-        <Link to="/profile">Profile</Link>
+        <Link to="/profile">Profile</Link> |{" "}
+        <Link to="/register">Register</Link> | <Link to="/login">Login</Link>
       </nav>
     </>
   );

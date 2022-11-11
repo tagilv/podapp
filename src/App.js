@@ -11,6 +11,9 @@ import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import TopNavbar from "./components/TopNavbar";
 import Login from "./views/Login";
+import { app } from "./config";
+import { auth } from "./config";
+import Register from "./views/Register";
 
 // In routes, you need to use the :title as it is in the api? No you dont but should you?
 
@@ -20,11 +23,14 @@ function App() {
     paddingBottom: "1rem",
   };
 
+  console.log("auth", auth);
+
   return (
     <div className="App">
       <AuthContextProvider>
         <TopNavbar />
         <Routes>
+          <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
           <Route path="/" element={<Home />} />
           <Route path="collections" element={<Collections />} />

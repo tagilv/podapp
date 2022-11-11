@@ -10,7 +10,7 @@ function CollectionEpisodeDetails() {
   const location = useLocation();
 
   let individualPodcastId = location.state.podcastId;
-  console.log("individualPocastId>>", individualPodcastId);
+  // console.log("individualPocastId>>", individualPodcastId);
 
   // console.log("dataFetchTwo>>", dataFetchTwo.episodes);
   // Use individualPocastId to fetch episodes and render this episodes in episodes component
@@ -28,7 +28,7 @@ function CollectionEpisodeDetails() {
       console.log(error);
     }
   };
-  console.log("dataFetchTwo.episodes>>", dataFetchTwo.episodes);
+  // console.log("dataFetchTwo.episodes>>", dataFetchTwo.episodes);
 
   useEffect(() => {
     fetchEpisodes();

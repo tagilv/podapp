@@ -20,7 +20,7 @@ function Collections() {
       setCollections(dataFetchOne.curated_lists);
       // setPage(result);
 
-      console.log("dataFetchOne", dataFetchOne);
+      // console.log("dataFetchOne", dataFetchOne);
     } catch (error) {
       console.log(error);
     }
