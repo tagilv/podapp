@@ -39,7 +39,8 @@ function TopNavbar() {
           </Button>
         )}
         <Link to="/profile">Profile</Link> |{" "}
-        <Link to="/register">Register</Link> | <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link> | <Link to="/login">Login</Link> |
+        <Link to="/chat">Chat</Link>
       </nav>
     </>
   );

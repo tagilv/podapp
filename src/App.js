@@ -14,6 +14,7 @@ import Login from "./views/Login";
 import { app } from "./config";
 import { auth } from "./config";
 import Register from "./views/Register";
+import Chat from "./views/Chat";
 
 // In routes, you need to use the :title as it is in the api? No you dont but should you?
 
@@ -52,6 +53,14 @@ function App() {
             element={
               <ProtectedRoute>
                 <Profile />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="chat"
+            element={
+              <ProtectedRoute>
+                <Chat />
               </ProtectedRoute>
             }
           />

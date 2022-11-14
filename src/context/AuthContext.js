@@ -50,7 +50,6 @@ export const AuthContextProvider = (props) => {
       //   });
       console.log("currentUser>>", currentUser);
       setUser(currentUser);
-      navigate("/login");
     } catch (error) {
       alert(error.message);
       const errorCode = error.code;
