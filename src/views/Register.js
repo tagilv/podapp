@@ -11,9 +11,15 @@ function Register() {
   const [emailError, setEmailError] = useState("");
   const [passwordError, setPasswordError] = useState("");
 
+  const [username, setUsername] = useState("");
+
   // const [error, setError] = useState("");
 
   const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
+  const handleUsernameChange = (e) => {
+    setUsername(e.target.value);
+  };
 
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
@@ -40,7 +46,7 @@ function Register() {
     event.preventDefault();
     //Create function to register
     //The below fucntion we havent created yet...
-    register(email, password);
+    register(email, password, username);
   };
 
   return (
@@ -49,24 +55,39 @@ function Register() {
         <Container maxWidth="sm">
           <h2>Register</h2>
           <form>
+            <label htmlFor="username"></label>
+            <input
+              type="username"
+              name="username"
+              id="username"
+              value={username}
+              onChange={handleUsernameChange}
+              placeholder="username"
+              autocomplete="off"
+            />
+            <label htmlFor="email"></label>
             <input
               type="email"
               name="email"
               id="email"
               value={email}
               onChange={handleEmailChange}
+              placeholder="email"
+              autocomplete="off"
             />
             {emailError && <p>{emailError}</p>}
-            <label htmlFor="email">email</label>
+            <label htmlFor="password"></label>
             <input
               type="password"
               name="password"
               id="password"
               value={password}
               onChange={handlePasswordChange}
+              placeholder="password"
+              autocomplete="off"
             />
             {passwordError && <p>{passwordError}</p>}
-            <label htmlFor="password">password</label>
+
             <button onClick={handleRegister}>Register</button>
           </form>
         </Container>

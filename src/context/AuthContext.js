@@ -5,6 +5,7 @@ import {
   signInWithEmailAndPassword,
   onAuthStateChanged,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import React, { createContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +21,7 @@ export const AuthContextProvider = (props) => {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(true);
 
-  const register = async (email, password) => {
+  const register = async (email, password, username) => {
     // console.log("email, password", email);
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -28,7 +29,27 @@ export const AuthContextProvider = (props) => {
         email,
         password
       );
-      // console.log("userCredential>>", userCredential);
+      console.log("displayName", username);
+      const currentUser = await updateProfile(auth.currentUser, {
+        displayName: username,
+        // photoURL: "https://example.com/jane-q-user/profile.jpg",
+      });
+      // updateProfile(auth.currentUser, {
+      //   displayName: username,
+      //   // photoURL: "https://example.com/jane-q-user/profile.jpg",
+      // })
+      //   .then(() => {
+      //     // Profile updated!
+      //     // ...
+
+      //   })
+      //   .catch((error) => {
+      //     // An error occurred
+      //     // ...
+      //     console.log("error", error);
+      //   });
+      console.log("currentUser>>", currentUser);
+      setUser(currentUser);
       navigate("/login");
     } catch (error) {
       alert(error.message);
@@ -38,6 +59,19 @@ export const AuthContextProvider = (props) => {
       // console.log("error message>>", error.message);
     }
   };
+
+  // updateProfile(auth.currentUser, {
+  //   displayName = currentUser.displayName,
+  //   photoURL = "https://example.com/jane-q-user/profile.jpg",
+  // })
+  //   .then(() => {
+  //     // Profile updated!
+  //     // ...
+  //   })
+  //   .catch((error) => {
+  //     // An error occurred
+  //     // ...
+  //   });
 
   const login = async (email, password) => {
     try {
@@ -83,14 +117,6 @@ export const AuthContextProvider = (props) => {
     } catch (error) {
       console.log(error);
     }
-
-    // signOut(auth)
-    //   .then(() => {
-    //     // Sign-out successful.
-    //   })
-    //   .catch((error) => {
-    //     // An error happened.
-    //   });
   };
 
   // Will run once when the component loads and not more
@@ -98,10 +124,32 @@ export const AuthContextProvider = (props) => {
     checkUserLoginStatus();
   }, []);
 
+  // const getUserInformation = () => {
+  //   if (user !== null) {
+  //     // The user object has basic properties such as display name, email, etc.
+  //     const displayName = user.displayName;
+  //     const email = user.email;
+  //     const photoURL = user.photoURL;
+  //     const emailVerified = user.emailVerified;
+
+  //     // The user's ID, unique to the Firebase project. Do NOT use
+  //     // this value to authenticate with your backend server, if
+  //     // you have one. Use User.getToken() instead.
+  //     const uid = user.uid;
+  //   }
+  // };
+
   return (
     // Two {{}} to send tan object, thats why we need {} when receiveng them in the useContext too
     <AuthContext.Provider
-      value={{ user, setUser, register, login, isLoading, logout }}
+      value={{
+        user,
+        setUser,
+        register,
+        login,
+        isLoading,
+        logout,
+      }}
     >
       {props.children}
     </AuthContext.Provider>
