@@ -14,9 +14,9 @@ function Home() {
     <div>
       <CssBaseline />
       <Container maxWidth="sm">
-        {user && <h2>{user.email}</h2>}
-        <h2>Explore curated Podcast Collections from XX</h2>
-        <Box sx={{ bgcolor: "#cfe8fc", height: "70vh" }}>
+        {/* {user && <h2>Welcome back {user.displayName}</h2>} */}
+        <h2>Explore our curated Podcasts!</h2>
+        <Box sx={{ bgcolor: "#cfe8fc" }}>
           <CardMedia component="img" image={podd} alt="Paella dish" />
         </Box>
       </Container>

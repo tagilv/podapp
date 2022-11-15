@@ -1,18 +1,18 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 
 function Profile() {
   // Thanks to useContext you can cinsume the info in user object
-  const { user } = useContext(AuthContext);
+  const { user, checkUserLoginStatus } = useContext(AuthContext);
 
-  // useEffect(() => {
-  //   getUserInformation()
-
-  // }, [])
+  useEffect(() => {
+    // getUserInformation()
+    checkUserLoginStatus();
+  }, []);
   console.log("user", user);
   return (
     <div>
-      <h2>Welcome {user.displayName}"</h2>
+      <h2>Welcome {user?.displayName}"</h2>
       <h6>In the future you will find messages and favourites here..</h6>
     </div>
   );

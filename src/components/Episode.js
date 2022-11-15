@@ -1,11 +1,17 @@
 import React from "react";
 
 function Episode({ episode }) {
+  console.log("episode>>", episode);
   return (
     <div>
-      <h2>Episode Componant here:</h2>
-      {episode.audio}
       <img src={episode.image} alt="" />
+      {/* <React.Fragment>
+        <audio controls> */}
+      {/* <source src={episode.audio} type="audio/ogg" /> */}
+      {/* <source src={episode.audio} type="audio/mpeg" />
+          Your browser does not support the audio element.
+        </audio>
+      </React.Fragment> */}
     </div>
   );
 }

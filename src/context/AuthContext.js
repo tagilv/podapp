@@ -18,59 +18,32 @@ export const AuthContext = createContext();
 export const AuthContextProvider = (props) => {
   // For firebase, this is where you create the function to log in with user name and pw, function will be triggered from the loggin view but the function will be created here so you can get access to the data base AND set your user here so you can make the value of your user available in the places you want to make it available (as value={{user}} in the .Provider)
   const [user, setUser] = useState(null);
-  const navigate = useNavigate();
+  const navigate = useNavigate("");
   const [isLoading, setIsLoading] = useState(true);
 
   const register = async (email, password, username) => {
-    // console.log("email, password", email);
     try {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
         password
       );
-      console.log("displayName", username);
       const currentUser = await updateProfile(auth.currentUser, {
         displayName: username,
         // photoURL: "https://example.com/jane-q-user/profile.jpg",
       });
-      // updateProfile(auth.currentUser, {
-      //   displayName: username,
-      //   // photoURL: "https://example.com/jane-q-user/profile.jpg",
-      // })
-      //   .then(() => {
-      //     // Profile updated!
-      //     // ...
-
-      //   })
-      //   .catch((error) => {
-      //     // An error occurred
-      //     // ...
-      //     console.log("error", error);
-      //   });
-      console.log("currentUser>>", currentUser);
-      setUser(currentUser);
+      console.log("currentUser", currentUser);
+      console.log("auth.currentUser", auth.currentUser);
+      setUser(userCredential);
+      navigate("/profile");
+      // console.log("currentUser.user>>", currentUser.user);
     } catch (error) {
       alert(error.message);
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log("error>>", error);
-      // console.log("error message>>", error.message);
     }
   };
-
-  // updateProfile(auth.currentUser, {
-  //   displayName = currentUser.displayName,
-  //   photoURL = "https://example.com/jane-q-user/profile.jpg",
-  // })
-  //   .then(() => {
-  //     // Profile updated!
-  //     // ...
-  //   })
-  //   .catch((error) => {
-  //     // An error occurred
-  //     // ...
-  //   });
 
   const login = async (email, password) => {
     try {
@@ -94,8 +67,7 @@ export const AuthContextProvider = (props) => {
   const checkUserLoginStatus = () => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
+        // User is signed in
         const uid = user.uid;
         console.log("user", user);
         setUser(user);
@@ -103,7 +75,7 @@ export const AuthContextProvider = (props) => {
         console.log("user is logged in");
       } else {
         // User is signed out
-        console.log("user is logged in");
+        console.log("user is logged out");
         setUser(null);
         setIsLoading(false);
       }
@@ -113,6 +85,7 @@ export const AuthContextProvider = (props) => {
   const logout = async () => {
     try {
       await signOut(auth);
+      navigate("/");
     } catch (error) {
       console.log(error);
     }
@@ -148,6 +121,7 @@ export const AuthContextProvider = (props) => {
         login,
         isLoading,
         logout,
+        checkUserLoginStatus,
       }}
     >
       {props.children}

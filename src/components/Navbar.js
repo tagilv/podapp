@@ -32,7 +32,7 @@ function Navbar() {
         <nav className="bottomnav">
           <NavLink to="/">Home</NavLink>{" "}
           <NavLink to="/collections">Collections</NavLink>{" "}
-          <NavLink to="/profile">Profile</NavLink>
+          <Link to="/chat">Chat</Link>
         </nav>
       ) : null}
     </>

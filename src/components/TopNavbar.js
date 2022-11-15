@@ -10,38 +10,25 @@ function TopNavbar() {
 
   const location = useLocation();
 
-  // const Login = () => {
-  //   setUser({
-  //     userName: "Viktor",
-  //   });
-  //   console.log(`user ${user?.userName} logged in`);
+  // const hideNav = () => {
+  //   console.log(location);
   // };
-
-  // const Logout = () => {
-  //   setUser(null);
-  //   console.log(`user logged out`);
-  // };
-
-  const hideNav = () => {
-    // console.log(location);
-  };
 
   return (
     <>
-      <nav className="topnav">
-        {user ? (
-          <Button variant="danger" onClick={logout}>
+      {user ? (
+        <nav className="topnav">
+          <Link to="/logout" onClick={() => logout()}>
             Logout
-          </Button>
-        ) : (
-          <Button variant="contained" onClick={login}>
-            Login
-          </Button>
-        )}
-        <Link to="/profile">Profile</Link> |{" "}
-        <Link to="/register">Register</Link> | <Link to="/login">Login</Link> |
-        <Link to="/chat">Chat</Link>
-      </nav>
+          </Link>
+          <Link to="/profile">Profile</Link>
+        </nav>
+      ) : (
+        <nav className="topnav">
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
+        </nav>
+      )}
     </>
   );
 }

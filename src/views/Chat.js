@@ -11,53 +11,40 @@ import { db } from "../config";
 import { AuthContext } from "../context/AuthContext";
 
 function Chat() {
-  console.log("chat db data>>", db);
-  console.log("doc>>", doc);
-
   const { user } = useContext(AuthContext);
-
   const [chatMessages, setChatMessages] = useState([]);
-  const [message, setMessage] = useState();
+  const [message, setMessage] = useState("");
 
-  const getMessages = async () => {
-    const myMessages = [];
-    try {
-      const querySnapshot = await getDocs(collection(db, "Chat"));
-      querySnapshot.forEach((doc) => {
-        console.log("doc>>", doc);
-        console.log(`${doc.id} => ${doc.data()}`);
-        myMessages.push(doc.data());
-      });
-      console.log("myMessages>>", myMessages);
-      setChatMessages(myMessages);
-    } catch (error) {
-      console.log(error);
-    }
-
-    // const myMessages = [];
+  const getMessages = () => {
     // try {
-    //   const q = await query(collection(db));
-    //   onSnapshot(q, (querySnapshot) => {
-    //     querySnapshot.forEach((doc) => {
-    //       myMessages.push(doc.data());
-    //     });
+    //   const myMessages = [];
+    //   const querySnapshot = getDocs(collection(db, "Chat"));
+    //   querySnapshot.forEach((doc) => {
+    //     console.log("doc>>", doc);
+    //     console.log(`${doc.id} => ${doc.data()}`);
+    //     myMessages.push(doc.data());
+    //     console.log("myMessages", myMessages);
+    //     setChatMessages(myMessages);
     //   });
-    //   setChatMessages(myMessages);
     //   console.log("myMessages>>", myMessages);
     // } catch (error) {
     //   console.log(error);
     // }
+    const q = query(collection(db, "Chat"));
+    onSnapshot(q, (querySnapshot) => {
+      const myMessages = [];
+      querySnapshot.forEach((doc) => {
+        myMessages.push(doc.data());
+      });
+      setChatMessages(myMessages);
+      console.log("chat messages", myMessages);
+    });
   };
 
   const messageDate = (date) => {
-    console.log("date", date.toString());
+    // console.log("date", date.toString());
     return new Date(date.seconds * 1000).toLocaleString();
-    // return date.toLocaleString();
   };
-
-  useEffect(() => {
-    getMessages();
-  }, []);
 
   const handleMessageChange = (e) => {
     setMessage(e.target.value);
@@ -66,7 +53,7 @@ function Chat() {
   const handleSubmitMessage = async (e) => {
     try {
       const docRef = await addDoc(collection(db, "Chat"), {
-        text: "message",
+        text: message,
         date: new Date(),
         author: user.displayName,
       });
@@ -77,6 +64,10 @@ function Chat() {
 
     console.log("message submitted>>", message);
   };
+
+  useEffect(() => {
+    getMessages();
+  }, []);
 
   return (
     <div>

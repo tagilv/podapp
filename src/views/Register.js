@@ -13,8 +13,6 @@ function Register() {
 
   const [username, setUsername] = useState("");
 
-  // const [error, setError] = useState("");
-
   const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 
   const handleUsernameChange = (e) => {
@@ -91,39 +89,11 @@ function Register() {
             <button onClick={handleRegister}>Register</button>
           </form>
         </Container>
-        <Link to="/login">Do you have an account, got too login</Link>
+        <br />
+        <Link to="/login">Alread have an account? - Go to login</Link>
       </div>
     </>
   );
 }
 
 export default Register;
-
-// const emailValidation = () => {
-//   const reg = new RegExp("/\(\s*([0-9.-]+)\s*,\s([0-9.-]+)\s*\)/g");
-//   if (RegExp.test(email)) {
-//     setMessage("Email is valid");
-//   } else {
-//     setMessage("");
-//   }
-// };
-
-// const handleEmailChange = (e) => {
-//   const reg = new RegExp("/(s*([0-9.-]+)s*,s([0-9.-]+)s*)/g");
-//   setEmail(e.target.value);
-//   console.log(e.target.value);
-//   if (RegExp.test(email)) {
-//     setMessage("Email is ok)");
-//   } else {
-//     setMessage("");
-//   }
-// };
-
-// {
-//   error && <h2 style={{ color: "red" }}>{error}</h2>;
-// }
-// <p>{message}</p>;
-
-// const isValidEmail = (email) => {
-//   return /(s*([0-9.-]+)s*,s([0-9.-]+)s*)/g.test(email);
-// };

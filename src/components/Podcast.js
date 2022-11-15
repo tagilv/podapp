@@ -4,10 +4,16 @@ import { Link } from "react-router-dom";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
-// import CardContent from "@mui/material/CardContent";
 import ListIcon from "@mui/icons-material/List";
 
+import FavoriteIcon from "@mui/icons-material/Favorite";
+
 function Podcast({ podcast }) {
+  const handleFavouritePodcast = () => {
+    console.log("podcast.id>>", podcast.id);
+    console.log("clicked");
+  };
+  console.log(podcast);
   return (
     <>
       <Grid item xs={12} md={6}>
@@ -18,6 +24,9 @@ function Podcast({ podcast }) {
                 <Link to={`${podcast.title}`} state={{ podcastId: podcast.id }}>
                   <ListIcon />
                 </Link>
+                <button type="" onClick={handleFavouritePodcast}>
+                  Add to favourites
+                </button>
               </IconButton>
             }
             title={podcast.title}

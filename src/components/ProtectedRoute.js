@@ -10,7 +10,6 @@ function ProtectedRoute({ children }) {
 
   return (
     <>
-      {/* {isAuthenticated ? children : <Navigate to="/login" />} */}
       {isLoading ? <p>loading</p> : user ? children : <Navigate to="/login" />}
     </>
   );

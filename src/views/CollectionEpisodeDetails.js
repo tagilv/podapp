@@ -3,6 +3,7 @@ import { useParams, useLocation } from "react-router-dom";
 import { dataFetchTwo } from "../data/dataFetchTwo.js";
 import Episode from "../components/Episode";
 import { Container } from "@mui/material";
+import Audioplayer from "../components/Audioplayer.js";
 
 function CollectionEpisodeDetails() {
   let params = useParams();
@@ -28,7 +29,6 @@ function CollectionEpisodeDetails() {
       console.log(error);
     }
   };
-  // console.log("dataFetchTwo.episodes>>", dataFetchTwo.episodes);
 
   useEffect(() => {
     fetchEpisodes();
@@ -39,7 +39,12 @@ function CollectionEpisodeDetails() {
       <Container>
         <h2>CollectionEpisodeDetails view here</h2>
         {episodes.map((episode) => {
-          return <Episode key={episode.id} episode={episode} />;
+          return (
+            <>
+              <Audioplayer key={episode.audio} episode={episode} />
+              <Episode key={episode.id} episode={episode} />
+            </>
+          );
         })}
       </Container>
     </div>
