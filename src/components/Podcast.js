@@ -20,22 +20,16 @@ import { db } from "../config";
 import CardContent from "@mui/material/CardContent";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { getFavouritePodcasts } from "../api/favouritePodcasts";
+import useFavouritePodcasts from "../hooks/useFavouritePodcasts";
 
 function Podcast({ podcast }) {
   const { user } = useContext(AuthContext);
-  const [favouritePodcasts, setFavouritePodcasts] = useState([]);
 
-  // Use effect close to set state..
-  useEffect(() => {
-    // has an argument so need to pass that in
-    // then((returninerar return valuet av getfavoritepodcasts))
-    user &&
-      getFavouritePodcasts(user.uid).then((favouritesArray) => {
-        setFavouritePodcasts(favouritesArray);
-      });
-  }, [user]);
+  // Function that takes a value(user.uid)
+  // Below, value is gathered in const favouritePodcasts
+  const favouritePodcasts = useFavouritePodcasts(user.uid);
 
-  console.log("favouritePodcasts>>", favouritePodcasts);
+  console.log("PPfavouritePodcasts>>", favouritePodcasts);
 
   const handleAddFavouritePodcast = async (e) => {
     // console.log("podcast.id>>", podcast.id);
