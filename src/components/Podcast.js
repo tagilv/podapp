@@ -107,7 +107,7 @@ function Podcast({ podcast }) {
     } else {
       // doc.data() will be undefined in this case
       console.log("No such document!");
-      await setDoc(doc(db, "Favourites", user.uid), { favs: [podcast] });
+      // await setDoc(doc(db, "Favourites", user.uid), { favs: [podcast] });
     }
 
     //   const docRef = await setDoc(collection(db, "Favourites"), {
