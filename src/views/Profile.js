@@ -9,7 +9,7 @@ function Profile() {
     // getUserInformation()
     checkUserLoginStatus();
   }, []);
-  console.log("user", user);
+
   return (
     <div>
       <h2>Welcome {user?.displayName}"</h2>

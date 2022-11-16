@@ -30,6 +30,7 @@ function Chat() {
     // } catch (error) {
     //   console.log(error);
     // }
+
     const q = query(collection(db, "Chat"));
     onSnapshot(q, (querySnapshot) => {
       const myMessages = [];
