@@ -19,39 +19,23 @@ import {
 import { db } from "../config";
 import CardContent from "@mui/material/CardContent";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import { getFavouritePodcasts } from "../api/favouritePodcasts";
 
 function Podcast({ podcast }) {
   const { user } = useContext(AuthContext);
   const [favouritePodcasts, setFavouritePodcasts] = useState([]);
 
-  // console.log("doc>>", doc);
+  // Use effect close to set state..
+  useEffect(() => {
+    // has an argument so need to pass that in
+    // then((returninerar return valuet av getfavoritepodcasts))
+    user &&
+      getFavouritePodcasts(user.uid).then((favouritesArray) => {
+        setFavouritePodcasts(favouritesArray);
+      });
+  }, [user]);
 
-  const getFavouritePodcasts = async () => {
-    try {
-      const favRef = doc(db, "Favourites", user.uid);
-
-      const querySnapshot = await getDoc(favRef);
-      console.log("querySnapshot", querySnapshot.data());
-
-      const favouritesArray = querySnapshot.data().favs;
-
-      setFavouritePodcasts(favouritesArray);
-
-      // setFavouritePodcasts(querySnapshot.data().favs);
-
-      // const favouritePodcasts = [];
-      // querySnapshot.forEach((doc) => {
-      //   // console.log("doc>>", doc);
-      //   console.log(`${doc.id} => ${doc.data()}`);
-      //   favouritePodcasts.push(doc.data());
-      //   // console.log("favouritePodcasts", favouritePodcasts);
-      // });
-    } catch (error) {
-      console.log(error);
-    }
-  };
   console.log("favouritePodcasts>>", favouritePodcasts);
-  // getFavouritePodcasts();
 
   const handleAddFavouritePodcast = async (e) => {
     // console.log("podcast.id>>", podcast.id);
@@ -122,10 +106,6 @@ function Podcast({ podcast }) {
     // }
     console.log("podcast added as favorite>>", podcast);
   };
-
-  useEffect(() => {
-    user && getFavouritePodcasts();
-  }, [user]);
 
   return (
     <>
