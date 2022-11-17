@@ -12,12 +12,15 @@ function Profile() {
   }, []);
 
   // Get the value of this using const favouritePodcast
-  const favouritePodcasts: PP = useFavouritePodcasts(user.uid);
-  console.log("PPPPfavouritePodcasts>>", favouritePodcasts);
+  const favouritePodcasts = useFavouritePodcasts(user.uid);
+  // console.log("favouritePodcasts>>", favouritePodcasts);
 
   return (
     <div>
       <h2>Welcome {user?.displayName}"</h2>
+      {favouritePodcasts.map((favouritePodcast) => {
+        return <p>{favouritePodcast.title}</p>;
+      })}
       <h6>In the future you will find messages and favourites here..</h6>
     </div>
   );
