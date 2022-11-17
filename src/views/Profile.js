@@ -1,5 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
+import useFavouritePodcasts from "../hooks/useFavouritePodcasts";
 
 function Profile() {
   // Thanks to useContext you can cinsume the info in user object
@@ -9,6 +10,10 @@ function Profile() {
     // getUserInformation()
     checkUserLoginStatus();
   }, []);
+
+  // Get the value of this using const favouritePodcast
+  const favouritePodcasts: PP = useFavouritePodcasts(user.uid);
+  console.log("PPPPfavouritePodcasts>>", favouritePodcasts);
 
   return (
     <div>

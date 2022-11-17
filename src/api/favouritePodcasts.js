@@ -15,6 +15,8 @@ const getFavouritePodcasts = async (uid) => {
     return favouritesArray;
   } catch (error) {
     console.log(error);
+    return [];
+    // If an error it is always an array and not undefiend
   }
 };
 

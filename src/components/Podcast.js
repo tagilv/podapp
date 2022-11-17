@@ -27,9 +27,13 @@ function Podcast({ podcast }) {
 
   // Function that takes a value(user.uid)
   // Below, value is gathered in const favouritePodcasts
-  const favouritePodcasts = useFavouritePodcasts(user.uid);
 
-  console.log("PPfavouritePodcasts>>", favouritePodcasts);
+  // Check if user is there:
+  // const uid = user?.uid;
+
+  const favouritePodcasts = useFavouritePodcasts(user?.uid);
+
+  console.log("favouritePodcasts>>", favouritePodcasts);
 
   const handleAddFavouritePodcast = async (e) => {
     // console.log("podcast.id>>", podcast.id);
