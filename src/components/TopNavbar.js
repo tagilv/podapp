@@ -9,14 +9,20 @@ function TopNavbar() {
   const { user, setUser, login, logout } = useContext(AuthContext);
 
   const location = useLocation();
+  console.log("location", location);
 
   // const hideNav = () => {
-  //   console.log(location);
+  //   if (location.pathname === "/") {
+  //     console.log("helloooooooooooo");
+  //   }
   // };
+  // hideNav();
 
   return (
     <>
-      {user ? (
+      {location.pathname === "/" ? (
+        ""
+      ) : user ? (
         <nav className="topnav">
           <Link to="/logout" onClick={() => logout()}>
             Logout

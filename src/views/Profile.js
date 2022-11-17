@@ -1,3 +1,4 @@
+import { Podcasts } from "@mui/icons-material";
 import React, { useContext, useEffect } from "react";
 import { AuthContext } from "../context/AuthContext";
 import useFavouritePodcasts from "../hooks/useFavouritePodcasts";
@@ -16,10 +17,10 @@ function Profile() {
   // console.log("favouritePodcasts>>", favouritePodcasts);
 
   return (
-    <div>
+    <div style={{ backgroundColor: "red", height: "70vh" }}>
       <h2>Welcome {user?.displayName}"</h2>
       {favouritePodcasts.map((favouritePodcast) => {
-        return <p>{favouritePodcast.title}</p>;
+        return <p key={favouritePodcast.id}>{favouritePodcast.title}</p>;
       })}
       <h6>In the future you will find messages and favourites here..</h6>
     </div>

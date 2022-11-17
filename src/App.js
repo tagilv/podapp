@@ -31,9 +31,9 @@ function App() {
       <AuthContextProvider>
         <TopNavbar />
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="register" element={<Register />} />
           <Route path="login" element={<Login />} />
-          <Route path="/" element={<Home />} />
           <Route path="collections" element={<Collections />} />
 
           <Route
