@@ -4,6 +4,9 @@ import Collection from "../components/Collection.js";
 import { Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import Hero from "../components/Hero.js";
+import FirstPageIcon from "@mui/icons-material/FirstPage";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 function Collections() {
   const [collections, setCollections] = useState([]);
@@ -19,6 +22,7 @@ function Collections() {
       const result = await response.json();
       setCollections(dataFetchOne.curated_lists);
       // setPage(result);
+      console.log("page>", page);
 
       // console.log("dataFetchOne", dataFetchOne);
     } catch (error) {
@@ -33,7 +37,15 @@ function Collections() {
 
   return (
     <div>
-      <Container>
+      <Container
+        sx={{
+          bgcolor: "lightgrey",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "start",
+          alignItems: "center",
+        }}
+      >
         <Hero />
         <Typography variant="h6">
           {/* This week's curated List of Podcasts! */}
@@ -48,26 +60,44 @@ function Collections() {
           <p>No collections</p>
         )}
         {error && <p>{error}</p>}
-
-        <Container>
-          {page !== 0 && (
+        <Container
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Container
+            sx={{
+              bgcolor: "lightgrey",
+              marginTop: "1vh",
+              marginBottom: "6vh",
+              display: "flex",
+              justifyContent: "space-around",
+            }}
+          >
+            {page !== 0 ? (
+              <button
+                type=""
+                onClick={() => {
+                  setPage(page - 1);
+                }}
+              >
+                <ArrowBackIcon />
+              </button>
+            ) : (
+              <button>
+                <FirstPageIcon />
+              </button>
+            )}
             <button
               type=""
               onClick={() => {
-                setPage(page - 1);
+                setPage(page + 1);
               }}
             >
-              Previous Page
+              <ArrowForwardIcon />
             </button>
-          )}
-          <button
-            type=""
-            onClick={() => {
-              setPage(page + 1);
-            }}
-          >
-            Next Page
-          </button>
+          </Container>
         </Container>
       </Container>
     </div>
@@ -90,3 +120,32 @@ export default Collections;
 
 // 2.
 // Check that error message working
+
+// <Container
+//   sx={{
+//     bgcolor: "lightgrey",
+//     marginTop: "1vh",
+//     marginBottom: "6vh",
+//     display: "flex",
+//     justifyContent: "space-around",
+//   }}
+// >
+//   {page !== 0 && (
+//     <button
+//       type=""
+//       onClick={() => {
+//         setPage(page - 1);
+//       }}
+//     >
+//       Previous Page
+//     </button>
+//   )}
+//   <button
+//     type=""
+//     onClick={() => {
+//       setPage(page + 1);
+//     }}
+//   >
+//     Next Page
+//   </button>
+// </Container>;

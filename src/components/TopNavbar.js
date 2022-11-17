@@ -1,15 +1,17 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import style from "../style/style.css";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function TopNavbar() {
   const { user, setUser, login, logout } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+
   const location = useLocation();
-  console.log("location", location);
 
   // const hideNav = () => {
   //   if (location.pathname === "/") {
@@ -24,6 +26,12 @@ function TopNavbar() {
         ""
       ) : user ? (
         <nav className="topnav">
+          <ArrowBackIcon
+            onClick={() => {
+              navigate(-1);
+            }}
+          ></ArrowBackIcon>
+          {/* <Link to="/previous">back</Link> */}
           <Link to="/logout" onClick={() => logout()}>
             Logout
           </Link>
@@ -40,3 +48,21 @@ function TopNavbar() {
 }
 
 export default TopNavbar;
+
+// {
+//   location.pathname === "/" ? (
+//     ""
+//   ) : user ? (
+//     <nav className="topnav">
+//       <Link to="/logout" onClick={() => logout()}>
+//         Logout
+//       </Link>
+//       <Link to="/profile">Profile</Link>
+//     </nav>
+//   ) : (
+//     <nav className="topnav">
+//       <Link to="/login">Login</Link>
+//       <Link to="/register">Register</Link>
+//     </nav>
+//   );
+// }

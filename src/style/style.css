@@ -9,7 +9,7 @@
 nav.topnav {
   border-bottom: "solid 1px";
   padding-bottom: "1rem";
-  background-color: antiquewhite;
+  background-color: #fcaf33;
   position: sticky;
   top: 0px;
   width: 100%;
@@ -24,7 +24,7 @@ nav.topnav {
 nav.bottomnav {
   border-bottom: "solid 1px";
   padding-bottom: "1rem";
-  background-color: antiquewhite;
+  background-color: #fcaf33;
   position: fixed;
   bottom: 0px;
   width: 100%;
