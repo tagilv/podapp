@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import GradeIcon from "@mui/icons-material/Grade";
 
 function Login() {
   const { login } = useContext(AuthContext);
@@ -9,12 +10,29 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [emailError, setEmailError] = useState("");
+  const [passwordError, setPasswordError] = useState("");
+
+  // const [successMessage, setSuccessMessage] = useState("")
+
+  const regex = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
+
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
+    if (regex.test(email) === false) {
+      setEmailError("Please enter valid email");
+    } else {
+      setEmailError("");
+    }
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+    if (e.target.value.length < 6) {
+      setPasswordError("Password has to be at least 6 charcaters long");
+    } else {
+      setPasswordError("");
+    }
   };
 
   //Start sending the info to Firebase:
@@ -29,31 +47,40 @@ function Login() {
       <div>
         <Container maxWidth="sm">
           <h2>Login</h2>
+          <label htmlFor="email"></label>
           <input
             type="email"
             name="email"
             id="email"
             value={email}
             onChange={handleEmailChange}
+            placeholder="email"
+            autocomplete="off"
           />
-          <label htmlFor="email">email</label>
+          {emailError && <p>{emailError}</p>}
+          <label htmlFor="password"></label>
           <input
             type="password"
             name="password"
             id="password"
             value={password}
             onChange={handlePasswordChange}
+            placeholder="email"
+            autocomplete="off"
           />
-          <label htmlFor="password">password</label>
+          {passwordError && <p>{passwordError}</p>}
+          <br />
+          <br />
+          {!emailError && !passwordError && <p>Well Done!</p>}
+          <br />
+
           <button type="submit" onClick={handleLogin}>
             Login
           </button>
         </Container>
-        <Link to="/register">
-          If you dont have an account, go here to register
-        </Link>
+        <br />
+        <Link to="/register">Dont have an account? - Go here to register</Link>
       </div>
-      ;
     </>
   );
 }

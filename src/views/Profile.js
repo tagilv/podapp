@@ -27,3 +27,30 @@ function Profile() {
 }
 
 export default Profile;
+
+{
+  /* return (
+        <div>
+        <h2>Welcome {user?.displayName}"</h2>
+        {favouritePodcasts.map((favouritePodcast) => {
+          return <p>{favouritePodcast.id}</p>;
+        })}
+
+        <h6>In the future you will find messages and favourites here..</h6>
+        </div>
+      ); */
+}
+
+// for (const id in favouritePodcasts) {
+// }
+{
+  /* //   const result = `${id}: ${favouritePodcasts[id]}`;
+      //   JSON.stringify(result);
+      //   console.log(result); */
+}
+
+// {
+//   Object.entries(favouritePodcasts).forEach(([key, value]) => {
+//     return <p>{`${key}: ${value}`}</p>;
+//   });
+// }

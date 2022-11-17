@@ -22,7 +22,7 @@ function Register() {
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
     if (regex.test(email) === false) {
-      setEmailError("please enter valid email");
+      setEmailError("Please enter valid email");
     } else {
       setEmailError("");
       // return true
@@ -73,6 +73,7 @@ function Register() {
               placeholder="email"
               autocomplete="off"
             />
+            {/* Remove EmailError to show well done */}
             {emailError && <p>{emailError}</p>}
             <label htmlFor="password"></label>
             <input
@@ -85,12 +86,14 @@ function Register() {
               autocomplete="off"
             />
             {passwordError && <p>{passwordError}</p>}
+            <br />
+            {!emailError && !passwordError && <p>Well done!</p>}
 
             <button onClick={handleRegister}>Register</button>
           </form>
         </Container>
         <br />
-        <Link to="/login">Alread have an account? - Go to login</Link>
+        <Link to="/login">Already have an account? - Go to login</Link>
       </div>
     </>
   );
