@@ -1,3 +1,4 @@
+import { Container } from "@mui/system";
 import {
   addDoc,
   collection,
@@ -16,21 +17,6 @@ function Chat() {
   const [message, setMessage] = useState("");
 
   const getMessages = () => {
-    // try {
-    //   const myMessages = [];
-    //   const querySnapshot = getDocs(collection(db, "Chat"));
-    //   querySnapshot.forEach((doc) => {
-    //     console.log("doc>>", doc);
-    //     console.log(`${doc.id} => ${doc.data()}`);
-    //     myMessages.push(doc.data());
-    //     console.log("myMessages", myMessages);
-    //     setChatMessages(myMessages);
-    //   });
-    //   console.log("myMessages>>", myMessages);
-    // } catch (error) {
-    //   console.log(error);
-    // }
-
     const q = query(collection(db, "Chat"));
     onSnapshot(q, (querySnapshot) => {
       const myMessages = [];
@@ -72,25 +58,27 @@ function Chat() {
 
   return (
     <div>
-      <h2>Chat starts here</h2>
-      <input
-        type="text"
-        value={message}
-        name="chat"
-        onChange={handleMessageChange}
-        placeholder="chat here"
-      />
-      <button onClick={handleSubmitMessage}>send</button>
-      {chatMessages &&
-        chatMessages.map((message, index) => {
-          return (
-            <div key={index} style={{ backgroundColor: "yellow" }}>
-              <p>{message.author}</p>
-              <p>{message.text}</p>
-              <p>{messageDate(message.date)}</p>
-            </div>
-          );
-        })}
+      <Container>
+        <h2>Chat with other users here</h2>
+        <input
+          type="text"
+          value={message}
+          name="chat"
+          onChange={handleMessageChange}
+          placeholder="..."
+        />
+        <button onClick={handleSubmitMessage}>Chat</button>
+        {chatMessages &&
+          chatMessages.map((message, index) => {
+            return (
+              <div key={index} style={{ backgroundColor: "lightgrey" }}>
+                <p>{message.author}</p>
+                <p>{message.text}</p>
+                <p>{messageDate(message.date)}</p>
+              </div>
+            );
+          })}
+      </Container>
     </div>
   );
 }

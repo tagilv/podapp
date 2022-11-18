@@ -37,12 +37,11 @@ function CollectionEpisodeDetails() {
   return (
     <div>
       <Container>
-        <h2>CollectionEpisodeDetails view here</h2>
         {episodes.map((episode) => {
           return (
             <>
-              <Audioplayer key={episode.audio} episode={episode} />
               <Episode key={episode.id} episode={episode} />
+              <Audioplayer key={episode.audio} episode={episode} />
             </>
           );
         })}
