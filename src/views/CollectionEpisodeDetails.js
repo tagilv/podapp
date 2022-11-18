@@ -9,7 +9,7 @@ function CollectionEpisodeDetails() {
   let params = useParams();
 
   const location = useLocation();
-
+  console.log("location", location);
   let individualPodcastId = location.state.podcastId;
   // console.log("individualPocastId>>", individualPodcastId);
 
@@ -21,10 +21,23 @@ function CollectionEpisodeDetails() {
 
   const fetchEpisodes = async () => {
     try {
+      const myHeaders = new Headers();
+      myHeaders.append("App", "Viktor_app");
+      myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
+
+      const requestOptions = {
+        method: "GET",
+        headers: myHeaders,
+        redirect: "follow",
+      };
       const url = `https://jsonplaceholder.typicode.com/users`;
-      const response = await fetch(url);
+      // const url = `https://cab-cors-anywhere.herokuapp.com/https://listen-api.listennotes.com/api/v2/podcasts/${location.state.podcastId}`;
+      const response = await fetch(url, requestOptions);
+      console.log("response", response);
       const result = await response.json();
+      console.log("result", result);
       setEpisodes(dataFetchTwo.episodes);
+      // setEpisodes(result.episodes);
     } catch (error) {
       console.log(error);
     }

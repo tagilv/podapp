@@ -1,7 +1,7 @@
 import React from "react";
 
 function Episode({ episode }) {
-  console.log("episode>>", episode);
+  // console.log("episode>>", episode);
   return (
     <div>
       <img src={episode.image} alt="" />
