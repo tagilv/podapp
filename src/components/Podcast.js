@@ -21,6 +21,7 @@ import CardContent from "@mui/material/CardContent";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { getFavouritePodcasts } from "../api/favouritePodcasts";
 import useFavouritePodcasts from "../hooks/useFavouritePodcasts";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function Podcast({ podcast }) {
   const { user } = useContext(AuthContext);
@@ -107,28 +108,49 @@ function Podcast({ podcast }) {
 
   return (
     <>
-      <Grid item xs={12} md={6}>
+      <Grid
+        sx={{
+          marginBottom: "10vh",
+        }}
+        item
+        xs={12}
+        md={6}
+      >
         <Card elevation={3}>
           <CardHeader
             action={
-              <IconButton size="medium">
+              <IconButton
+                sx={{
+                  display: "flex",
+                  flexDirection: "column",
+                }}
+                size="medium"
+              >
                 <Link to={`${podcast.title}`} state={{ podcastId: podcast.id }}>
                   <ListIcon />
                 </Link>
+                <FavoriteIcon
+                  sx={{
+                    color: "red",
+                  }}
+                  onClick={handleAddFavouritePodcast}
+                />
+                <FavoriteBorderIcon
+                  sx={{
+                    color: "red",
+                  }}
+                  onClick={handleRemoveFavouritePodcast}
+                />
               </IconButton>
             }
             title={podcast.title}
             subheader={podcast.publisher}
           />
-          <h2>Add favourite</h2>
-          <FavoriteBorderIcon onClick={handleAddFavouritePodcast} />
-          <h2>Remove favourite</h2>
-          <FavoriteBorderIcon onClick={handleRemoveFavouritePodcast} />
           <div width="50%">
             <CardMedia
-              width="50%"
+              width="30%"
               component="img"
-              height="194"
+              height="350"
               image={podcast.thumbnail}
               alt=""
             />
