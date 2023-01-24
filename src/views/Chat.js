@@ -85,8 +85,11 @@ function Chat() {
   // Ask about podcast id
 
   const handleDeleteMessage = async (e) => {
+    console.log("e.currentTarget", e.currentTarget.id);
     await deleteDoc(doc(db, "Chat", e.currentTarget.id));
     console.log("e", e);
+    console.log("e.currentTarget", e.currentTarget);
+    console.log("e.target", e.target);
   };
 
   useEffect(() => {

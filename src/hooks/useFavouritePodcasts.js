@@ -1,19 +1,22 @@
 import { useEffect, useState } from "react";
 import { getFavouritePodcasts } from "../api/favouritePodcasts";
 
-function useFavouritePodcasts(uid) {
+function useFavouritePodcasts(uid, x) {
   // Brought in uid as argument, switched out user to uid in the rest
   const [favouritePodcasts, setFavouritePodcasts] = useState([]);
 
+  // const [first, setfirst] = useState(second)
+
   // Use effect close to set state..
   useEffect(() => {
+    console.log("testing");
     // has an argument so need to pass that in
     // then((returninerar return valuet av getfavoritepodcasts))
     uid &&
       getFavouritePodcasts(uid).then((favouritesArray) => {
         setFavouritePodcasts(favouritesArray);
       });
-  }, [uid]);
+  }, [uid, x]);
   return favouritePodcasts;
 }
 

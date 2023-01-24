@@ -26,13 +26,16 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 function Podcast({ podcast }) {
   const { user } = useContext(AuthContext);
 
+  const [x, setX] = useState(false);
+
   // Function that takes a value(user.uid)
   // Below, value is gathered in const favouritePodcasts
 
   // Check if user is there:
   // const uid = user?.uid;
 
-  const favouritePodcasts = useFavouritePodcasts(user?.uid);
+  // Passing x into the hook (for the other page)
+  const favouritePodcasts = useFavouritePodcasts(user?.uid, x);
 
   console.log("favouritePodcasts>>", favouritePodcasts);
 
@@ -69,6 +72,7 @@ function Podcast({ podcast }) {
     //   console.error("Error adding document: ", e);
     // }
     console.log("podcast added as favorite>>", podcast);
+    setX(x ? false : true);
   };
 
   const handleRemoveFavouritePodcast = async (e) => {
@@ -103,7 +107,8 @@ function Podcast({ podcast }) {
     // } catch (e) {
     //   console.error("Error adding document: ", e);
     // }
-    console.log("podcast added as favorite>>", podcast);
+    console.log("podcast removed as favorite>>", podcast);
+    setX(x ? false : true);
   };
 
   return (
@@ -127,20 +132,27 @@ function Podcast({ podcast }) {
                 size="medium"
               >
                 <Link to={`${podcast.title}`} state={{ podcastId: podcast.id }}>
+                  {" "}
                   <ListIcon />
                 </Link>
-                <FavoriteIcon
-                  sx={{
-                    color: "red",
-                  }}
-                  onClick={handleAddFavouritePodcast}
-                />
-                <FavoriteBorderIcon
-                  sx={{
-                    color: "red",
-                  }}
-                  onClick={handleRemoveFavouritePodcast}
-                />
+
+                {favouritePodcasts.some((individualPodcast) => {
+                  return individualPodcast.id === podcast.id;
+                }) ? (
+                  <FavoriteIcon
+                    sx={{
+                      color: "red",
+                    }}
+                    onClick={handleRemoveFavouritePodcast}
+                  />
+                ) : (
+                  <FavoriteBorderIcon
+                    sx={{
+                      color: "red",
+                    }}
+                    onClick={handleAddFavouritePodcast}
+                  />
+                )}
               </IconButton>
             }
             title={podcast.title}
