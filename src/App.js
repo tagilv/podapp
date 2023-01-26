@@ -15,58 +15,64 @@ import { app } from "./config";
 import { auth } from "./config";
 import Register from "./views/Register";
 import Chat from "./views/Chat";
-
-// In routes, you need to use the :title as it is in the api? No you dont but should you?
+import { createTheme, ThemeProvider, responsiveFontSizes } from "@mui/material";
 
 function App() {
-  const myStyle = {
-    borderBottom: "solid 1px",
-    paddingBottom: "1rem",
-  };
-
   console.log("auth", auth);
+
+  const theme = createTheme({
+    typography: {
+      fontFamily: ["Space Mono", "monospace"].join(","),
+    },
+    responsiveFontSizes,
+  });
+
+  // let theme = createTheme();
+  // theme = responsiveFontSizes(theme);
 
   return (
     <div className="App">
       <AuthContextProvider>
-        <TopNavbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="register" element={<Register />} />
-          <Route path="login" element={<Login />} />
-          <Route path="collections" element={<Collections />} />
+        <ThemeProvider theme={theme}>
+          <TopNavbar />
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="register" element={<Register />} />
+            <Route path="login" element={<Login />} />
+            <Route path="collections" element={<Collections />} />
 
-          <Route
-            path="/collections/:title"
-            element={<CollectionPodcastsDetails />}
-          />
-          <Route
-            path="/collections/:title/:podcast"
-            element={
-              <ProtectedRoute>
-                <CollectionEpisodeDetails />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          />
-          <Route
-            path="chat"
-            element={
-              <ProtectedRoute>
-                <Chat />
-              </ProtectedRoute>
-            }
-          />
-          <Route path="*" element={<NoMatch />} />
-        </Routes>
-        <Navbar />
+            <Route
+              path="/collections/:title"
+              element={<CollectionPodcastsDetails />}
+            />
+            <Route
+              path="/collections/:title/:podcast"
+              element={
+                <ProtectedRoute>
+                  <CollectionEpisodeDetails />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="chat"
+              element={
+                <ProtectedRoute>
+                  <Chat />
+                </ProtectedRoute>
+              }
+            />
+            <Route path="*" element={<NoMatch />} />
+          </Routes>
+          <Navbar />
+        </ThemeProvider>
       </AuthContextProvider>
     </div>
   );

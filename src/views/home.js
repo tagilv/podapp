@@ -2,10 +2,11 @@ import React, { useContext } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import podd from "../assets/podd.jpg";
-import { Button, CardMedia } from "@mui/material";
+import podd from "../assets/podd.png";
+import { Button, CardMedia, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite";
 
 function Home() {
   const { user } = useContext(AuthContext);
@@ -16,7 +17,7 @@ function Home() {
         maxWidth="sm"
         sx={{
           bgcolor: "lightgrey",
-          height: "85vh",
+          height: "50vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "start",
@@ -24,7 +25,7 @@ function Home() {
         }}
       >
         {/* {user && <h2>Welcome back {user.displayName}</h2>} */}
-        <h2>Discover your favourite Podcasts!</h2>
+        <Typography variant="h3">Welcome to randopod..</Typography>
         <Box sx={{ bgcolor: "#cfe8fc" }}>
           <CardMedia component="img" image={podd} alt="podcast image" />
         </Box>
@@ -33,7 +34,7 @@ function Home() {
         maxWidth="sm"
         sx={{
           bgcolor: "lightgrey",
-          height: "15vh",
+          height: "50vh",
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
@@ -42,12 +43,13 @@ function Home() {
         }}
       >
         <Button
+          position="fixed"
           variant="contained"
           component={Link}
           to={"/collections"}
           sx={{ width: "35vw", backgroundColor: "#FCAF33", color: "black" }}
         >
-          START
+          <PlayCircleFilledWhiteIcon />
         </Button>
       </Container>
     </div>

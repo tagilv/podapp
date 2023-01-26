@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
-import style from "../style/style.css";
+
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 function TopNavbar() {
@@ -48,21 +48,3 @@ function TopNavbar() {
 }
 
 export default TopNavbar;
-
-// {
-//   location.pathname === "/" ? (
-//     ""
-//   ) : user ? (
-//     <nav className="topnav">
-//       <Link to="/logout" onClick={() => logout()}>
-//         Logout
-//       </Link>
-//       <Link to="/profile">Profile</Link>
-//     </nav>
-//   ) : (
-//     <nav className="topnav">
-//       <Link to="/login">Login</Link>
-//       <Link to="/register">Register</Link>
-//     </nav>
-//   );
-// }
