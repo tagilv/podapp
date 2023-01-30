@@ -18,7 +18,7 @@ MongoDB
 MaterialUI
 </p>
 
-<h2>Deploying in the next couple of days:</h2>
+Deploying in the next couple of days
 
 
 
