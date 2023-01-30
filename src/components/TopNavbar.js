@@ -10,6 +10,7 @@ import ReplyIcon from "@mui/icons-material/Reply";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import LoginIcon from "@mui/icons-material/Login";
+import { Box } from "@mui/system";
 
 function TopNavbar() {
   const { user, setUser, login, logout } = useContext(AuthContext);
@@ -57,23 +58,54 @@ function TopNavbar() {
         </nav>
       ) : (
         <nav className="topnav">
-          <Typography
+          <ReplyIcon
             sx={{
               color: "white",
-              textDecoration: "none",
             }}
-            as={Link}
-            to="/register"
-          >
-            Sign up
-          </Typography>
-          <Link to="/login">
-            <LoginIcon
+            onClick={() => {
+              navigate(-1);
+            }}
+          />
+          {/* <Link to="/previous">back</Link> */}
+          <Link to="/profile">
+            <AccountCircleIcon
               sx={{
                 color: "white",
               }}
             />
           </Link>
+          <Box
+            sx={{
+              justifyContent: "space-between",
+              display: "flex",
+              flexDirection: "row",
+            }}
+          >
+            <Typography
+              sx={{
+                color: "white",
+                display: "flex",
+                textDecoration: "none",
+                justifyContent: "space-between",
+                padding: 1,
+              }}
+              as={Link}
+              to="/register"
+            >
+              Signup
+            </Typography>
+            <Typography
+              sx={{
+                color: "white",
+                textDecoration: "none",
+                padding: 1,
+              }}
+              as={Link}
+              to="/login"
+            >
+              login
+            </Typography>
+          </Box>
         </nav>
       )}
     </>
