@@ -13,6 +13,8 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { db } from "../config";
 import { AuthContext } from "../context/AuthContext";
+import { Button, TextField, Typography } from "@mui/material";
+import SendIcon from "@mui/icons-material/Send";
 
 function Chat() {
   const { user } = useContext(AuthContext);
@@ -68,7 +70,7 @@ function Chat() {
     const docRef = doc(db, "Chat", e.currentTarget.id);
 
     await updateDoc(docRef, {
-      text: "hi",
+      text: "tba",
     });
   };
 
@@ -79,10 +81,6 @@ function Chat() {
   // Comments
   // have cusotm id and then  in the comments
   // retirve the id when opening the podcast comments
-
-  // "Ask about text: message"
-  // Ask about async and try catch
-  // Ask about podcast id
 
   const handleDeleteMessage = async (e) => {
     console.log("e.currentTarget", e.currentTarget.id);
@@ -99,15 +97,19 @@ function Chat() {
   return (
     <div>
       <Container>
-        <h2>Chat with other users here</h2>
-        <input
+        <Typography variant="h6">Chat with other podcast listeners</Typography>
+
+        <TextField
+          fullWidth
           type="text"
           value={message}
           name="chat"
           onChange={handleMessageChange}
-          placeholder="..."
+          placeholder="type something"
         />
-        <button onClick={handleSubmitMessage}>Chat</button>
+        <Button onClick={handleSubmitMessage}>
+          <SendIcon />
+        </Button>
         {chatMessages &&
           chatMessages.map((message, index) => {
             return (
@@ -116,9 +118,9 @@ function Chat() {
                 <p>{message.author}</p>
                 <p>{message.text}</p>
                 <p>{messageDate(message.date)}</p>
-                <button id={message.id} onClick={handleEditMessage}>
+                {/* <button id={message.id} onClick={handleEditMessage}>
                   Edit
-                </button>
+                </button> */}
                 <button id={message.id} onClick={handleDeleteMessage}>
                   Delete
                 </button>
