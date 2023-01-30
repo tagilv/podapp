@@ -19,13 +19,6 @@ function TopNavbar() {
 
   const location = useLocation();
 
-  // const hideNav = () => {
-  //   if (location.pathname === "/") {
-  //     console.log("helloooooooooooo");
-  //   }
-  // };
-  // hideNav();
-
   return (
     <>
       {location.pathname === "/" ? (
@@ -92,7 +85,7 @@ function TopNavbar() {
               as={Link}
               to="/register"
             >
-              Signup
+              signup
             </Typography>
             <Typography
               sx={{

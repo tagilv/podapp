@@ -76,6 +76,7 @@ export const AuthContextProvider = (props) => {
       } else {
         // User is signed out
         console.log("user is logged out");
+
         setUser(null);
         setIsLoading(false);
       }

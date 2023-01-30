@@ -26,12 +26,12 @@ function Home() {
         {/* {user && <h2>Welcome back {user.displayName}</h2>} */}
         <Typography variant="h3">Welcome to randopod</Typography>
         {/* <Typography variant="h6">Your collection of random podcasts</Typography> */}
-        <Box sx={{ bgcolor: "#cfe8fc" }}>
+        <Box>
           <CardMedia component="img" image={podd} alt="podcast image" />
         </Box>
         <Box
           sx={{
-            height: "30vh",
+            height: "5vh",
             display: "flex",
             flexDirection: "column",
             // justifyContent: "space-around",
