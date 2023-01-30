@@ -11,8 +11,7 @@ import PlayCircleFilledWhiteIcon from "@mui/icons-material/PlayCircleFilledWhite
 function Home() {
   const { user } = useContext(AuthContext);
   return (
-    <div>
-      {/* <CssBaseline /> */}
+    <>
       <Container
         maxWidth="sm"
         sx={{
@@ -20,32 +19,43 @@ function Home() {
           height: "100vh",
           display: "flex",
           flexDirection: "column",
-          justifyContent: "space-evenly",
+          justifyContent: "space-around",
           alignItems: "center",
         }}
       >
         {/* {user && <h2>Welcome back {user.displayName}</h2>} */}
-        <Typography variant="h3">Welcome to randopod..</Typography>
+        <Typography variant="h3">Welcome to randopod</Typography>
+        {/* <Typography variant="h6">Your collection of random podcasts</Typography> */}
         <Box sx={{ bgcolor: "#cfe8fc" }}>
           <CardMedia component="img" image={podd} alt="podcast image" />
         </Box>
-        <Button
-          variant="contained"
-          component={Link}
-          to={"/collections"}
+        <Box
           sx={{
-            width: "35vw",
-            backgroundColor: "black",
-            color: "white",
-            "&:hover": {
-              backgroundColor: "gray",
-            },
+            height: "30vh",
+            display: "flex",
+            flexDirection: "column",
+            // justifyContent: "space-around",
           }}
         >
-          Get Started
-        </Button>
+          <Button
+            variant="contained"
+            component={Link}
+            to={"/collections"}
+            sx={{
+              width: "35vw",
+              paddingTop: "5",
+              backgroundColor: "black",
+              color: "white",
+              "&:hover": {
+                backgroundColor: "gray",
+              },
+            }}
+          >
+            Get Started
+          </Button>
+        </Box>
       </Container>
-    </div>
+    </>
   );
 }
 

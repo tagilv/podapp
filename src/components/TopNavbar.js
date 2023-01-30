@@ -1,10 +1,15 @@
-import { Button } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import React, { useContext } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
+import LogoutIcon from "@mui/icons-material/Logout";
+import ArrowLeftIcon from "@mui/icons-material/ArrowLeft";
+import ReplyIcon from "@mui/icons-material/Reply";
 
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import LoginIcon from "@mui/icons-material/Login";
 
 function TopNavbar() {
   const { user, setUser, login, logout } = useContext(AuthContext);
@@ -26,21 +31,49 @@ function TopNavbar() {
         ""
       ) : user ? (
         <nav className="topnav">
-          <ArrowBackIcon
+          <ReplyIcon
+            sx={{
+              color: "white",
+            }}
             onClick={() => {
               navigate(-1);
             }}
-          ></ArrowBackIcon>
+          />
           {/* <Link to="/previous">back</Link> */}
-          <Link to="/logout" onClick={() => logout()}>
-            Logout
+          <Link to="/profile">
+            <AccountCircleIcon
+              sx={{
+                color: "white",
+              }}
+            />
           </Link>
-          <Link to="/profile">Profile</Link>
+          <Link to="/logout" onClick={() => logout()}>
+            <LogoutIcon
+              sx={{
+                color: "white",
+              }}
+            />
+          </Link>
         </nav>
       ) : (
         <nav className="topnav">
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
+          <Typography
+            sx={{
+              color: "white",
+              textDecoration: "none",
+            }}
+            as={Link}
+            to="/register"
+          >
+            Sign up
+          </Typography>
+          <Link to="/login">
+            <LoginIcon
+              sx={{
+                color: "white",
+              }}
+            />
+          </Link>
         </nav>
       )}
     </>

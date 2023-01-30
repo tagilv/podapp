@@ -2,11 +2,14 @@ import React, { useEffect, useState } from "react";
 import { dataFetchOne } from "../data/dataFetchOne.js";
 import Collection from "../components/Collection.js";
 import { Grid, Typography } from "@mui/material";
-import { Container } from "@mui/system";
+import { Box, Container } from "@mui/system";
 import Hero from "../components/Header.js";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import style from "../style/style.css";
 
 function Collections() {
   const [collections, setCollections] = useState([]);
@@ -71,7 +74,17 @@ function Collections() {
             })}
           </Grid>
         ) : (
-          <p>No collections</p>
+          <Container
+            sx={{
+              bgcolor: "lightgrey",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "start",
+              alignItems: "center",
+            }}
+          >
+            <p>No collections</p>
+          </Container>
         )}
         {error && <p>{error}</p>}
         <Container
@@ -90,29 +103,23 @@ function Collections() {
             }}
           >
             {page !== 1 ? (
-              <button
-                type=""
+              <KeyboardArrowLeftIcon
                 onClick={() => {
                   setPage(page - 1);
                 }}
-              >
-                <ArrowBackIcon />
-              </button>
+              />
             ) : (
-              <button>
-                <FirstPageIcon />
-              </button>
+              <FirstPageIcon />
             )}
-            <button
+            <KeyboardArrowRightIcon
               type=""
               onClick={() => {
                 setPage(page + 1);
               }}
-            >
-              <ArrowForwardIcon />
-            </button>
+            />
           </Container>
         </Container>
+        <Box></Box>
       </Container>
     </div>
   );

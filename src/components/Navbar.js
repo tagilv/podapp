@@ -4,6 +4,9 @@ import { NavLink, useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthContext";
 import style from "../style/style.css";
+import HomeIcon from "@mui/icons-material/Home";
+import PodcastsIcon from "@mui/icons-material/Podcasts";
+import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
 
 function Navbar() {
   const { user, setUser } = useContext(AuthContext);
@@ -30,9 +33,27 @@ function Navbar() {
     <>
       {location.pathname !== "/" ? (
         <nav className="bottomnav">
-          <NavLink to="/">Home</NavLink>{" "}
-          <NavLink to="/collections">Collections</NavLink>{" "}
-          <Link to="/chat">Chat</Link>
+          <NavLink to="/">
+            <HomeIcon
+              sx={{
+                color: "white",
+              }}
+            />
+          </NavLink>{" "}
+          <NavLink to="/collections">
+            <PodcastsIcon
+              sx={{
+                color: "white",
+              }}
+            />
+          </NavLink>{" "}
+          <Link to="/chat">
+            <ChatBubbleOutlineIcon
+              sx={{
+                color: "white",
+              }}
+            />
+          </Link>
         </nav>
       ) : null}
     </>

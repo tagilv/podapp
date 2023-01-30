@@ -49,7 +49,11 @@ function CollectionEpisodeDetails() {
 
   return (
     <div>
-      <Container>
+      <Container
+        sx={{
+          bgcolor: "lightgrey",
+        }}
+      >
         {episodes.map((episode) => {
           return (
             <>

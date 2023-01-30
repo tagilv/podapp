@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useLocation } from "react-router-dom";
 import Podcast from "../components/Podcast";
-import { Grid } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { Container } from "@mui/system";
 
 function CollectionPodcastsDetails() {
@@ -13,9 +13,27 @@ function CollectionPodcastsDetails() {
 
   return (
     <div>
-      <Container>
-        <h2>{params.title}</h2>
-        <Grid container spacing={3}>
+      <Container
+        sx={{
+          bgcolor: "lightgrey",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "start",
+        }}
+      >
+        <Box
+          sx={{
+            bgcolor: "lightgrey",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "start",
+            alignItems: "center",
+            padding: 4,
+          }}
+        >
+          <Typography variant="h5">{params.title}</Typography>
+        </Box>
+        <Grid container spacing={1}>
           {podcastArray.map((podcast) => {
             return <Podcast key={podcast.id} podcast={podcast} />;
           })}

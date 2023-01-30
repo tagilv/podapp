@@ -31,6 +31,8 @@ const sxCollectionTypographyStyle = {
   padding: 2,
   bgcolor: "#FF4F79",
   width: "90%",
+  p: 1,
+  // maxHeight: 30,
 };
 
 function Collection({ collection }) {
@@ -68,7 +70,11 @@ function Collection({ collection }) {
             >
               {/* <div style={{ direction: "row" }} size="small"> */}
               {/* <Button>Explore</Button> */}
-              <KeyboardArrowRightIcon />
+              <KeyboardArrowRightIcon
+                sx={{
+                  color: "black",
+                }}
+              />
               {/* </div> */}
             </Button>
           </CardContent>
