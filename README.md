@@ -1,3 +1,28 @@
+# Podcast App project
+
+<h2>ReactJS Front-end application built with React, Firebase and MaterialUI</h2>
+
+<h2>Purpose of the application</h2>
+<p>
+This application was built on an api from listennotes (https://www.listennotes.com/api/) that provides an api for podcasts. I built the application on an endpoint that gets you random collections of podcasts that updates every week. Thru my application you can listen to podcasts, like podcasts (that then end up as your liked podcasts on your profile) and chat with other users (public chat) in a chat room. The application is built as a mobile first application and is meant to be used on a mobile phone. I will be deploying the app in the next couple of days. 
+</p>
+  
+<h2>Technologies used</h2>
+<p>
+React.js
+<br>
+Firebase
+<br>
+MongoDB
+<br>
+MaterialUI
+</p>
+
+<h2>Deploying in the next couple of days:</h2>
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
