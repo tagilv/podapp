@@ -13,8 +13,6 @@ React.js
 <br>
 Firebase
 <br>
-MongoDB
-<br>
 MaterialUI
 </p>
 
