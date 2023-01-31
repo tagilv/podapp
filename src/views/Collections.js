@@ -38,7 +38,7 @@ function Collections() {
         // mode: "no-cors",
       };
       // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
-      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
+      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}&api_key=${process.env.REACT_APP_KEY}`;
       console.log("url fetching from", url);
       const response = await fetch(url, requestOptions);
 
