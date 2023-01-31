@@ -33,7 +33,7 @@ function Collections() {
 
       const requestOptions = {
         method: "GET",
-        headers: myHeaders,
+        // headers: myHeaders,
         redirect: "follow",
         // mode: "no-cors",
       };
