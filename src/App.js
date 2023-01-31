@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import Collections from "./views/Collections";
-import Home from "./views/Home";
+import Home from "./views/Home.js";
 import Profile from "./views/Profile";
 import Navbar from "./components/Navbar";
 import NoMatch from "./views/NoMatch";
