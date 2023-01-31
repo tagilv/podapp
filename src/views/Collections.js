@@ -22,22 +22,25 @@ function Collections() {
       const myHeaders = new Headers();
       myHeaders.append("App", "Viktor_app");
       myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
+      myHeaders.append("Accept", "application/json");
+      myHeaders.append("Access-Control-Allow-Headers", "*");
 
       const requestOptions = {
         method: "GET",
         headers: myHeaders,
         redirect: "follow",
+        // mode: "no-cors",
       };
-      const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
-      // const url = `https://cab-cors-anywhere.herokuapp.com/https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
+      // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
+      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
       const response = await fetch(url, requestOptions);
 
       const result = await response.json();
       console.log("result", result);
-      // setCollections(result.curated_lists);
-      // setPage(result);
+      setCollections(result.curated_lists);
+      setPage(result);
 
-      setCollections(dataFetchOne.curated_lists);
+      // setCollections(dataFetchOne.curated_lists);
       // setPage(result);
       console.log("page>", page);
 

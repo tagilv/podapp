@@ -15,7 +15,7 @@ import { app } from "./config";
 import { auth } from "./config";
 import Register from "./views/Register";
 import Chat from "./views/Chat";
-import { createTheme, ThemeProvider, responsiveFontSizes } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material";
 
 function App() {
   console.log("auth", auth);
@@ -24,11 +24,7 @@ function App() {
     typography: {
       fontFamily: ["Space Mono", "monospace"].join(","),
     },
-    responsiveFontSizes,
   });
-
-  // let theme = createTheme();
-  // theme = responsiveFontSizes(theme);
 
   return (
     <div className="App">
