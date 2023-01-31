@@ -26,7 +26,7 @@ function Collections() {
       myHeaders.append("Access-Control-Allow-Origin", "*");
       myHeaders.append(
         "Access-Control-Allow-Origin",
-        "https://podapp-reactjsapp.vercel.app/collections"
+        "https://podapp-reactjsapp.vercel.app"
       );
 
       // myHeaders.append("access-control-allow-headers", "*");
