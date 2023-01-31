@@ -23,7 +23,7 @@ function Collections() {
       myHeaders.append("App", "Viktor_app");
       myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
       myHeaders.append("Accept", "application/json");
-      myHeaders.append("access-control-allow-headers", "*");
+      // myHeaders.append("access-control-allow-headers", "*");
 
       const requestOptions = {
         method: "GET",
@@ -33,6 +33,7 @@ function Collections() {
       };
       // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
       const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
+      console.log("url fetching from", url);
       const response = await fetch(url, requestOptions);
 
       const result = await response.json();
