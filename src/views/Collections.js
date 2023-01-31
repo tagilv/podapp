@@ -22,7 +22,7 @@ function Collections() {
       const myHeaders = new Headers();
       myHeaders.append("App", "Viktor_app");
       myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
-      // myHeaders.append("Accept", "application/json");
+      myHeaders.append("Accept", "application/json");
       // myHeaders.append("access-control-allow-headers", "*");
 
       const requestOptions = {
