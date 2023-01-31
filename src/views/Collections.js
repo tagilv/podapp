@@ -21,18 +21,20 @@ function Collections() {
     try {
       const myHeaders = new Headers();
       myHeaders.append("App", "Viktor_app");
-      myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
+      // myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
       myHeaders.append("Accept", "application/json");
-      // myHeaders.append("access-control-allow-headers", "*");
+      myHeaders.append("Access-Control-Allow-Headers", "*");
+      // myHeaders.append("Access-Control-Allow-Origin", "http://localhost:3000");
+      // myHeaders.append("Access-Control-Allow-Credentials", "true");
 
       const requestOptions = {
         method: "GET",
-        // headers: myHeaders,
+        headers: myHeaders,
         redirect: "follow",
         // mode: "no-cors",
       };
       // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
-      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
+      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts/${process.env.REACT_APP_KEY}?page=${page}`;
       console.log("url fetching from", url);
       const response = await fetch(url, requestOptions);
 
