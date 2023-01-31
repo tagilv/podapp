@@ -16,7 +16,8 @@ function Collections() {
   const [error, setError] = useState(null);
 
   const [page, setPage] = useState(1);
-  const [X-ListenAPI-Key, setX-ListenAPI-Key] = useState(process.env.REACT_APP_KEY)
+
+  const key = process.env.REACT_APP_KEY;
 
   const fetchCollectionsAsync = async () => {
     try {
@@ -35,7 +36,7 @@ function Collections() {
         // mode: "no-cors",
       };
       // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
-      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts/X-ListenAPI-Key=${X-ListenAPI-Key}?page=${page}`;
+      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts/key=${process.env.REACT_APP_KEY}?page=${page}`;
       console.log("url fetching from", url);
       const response = await fetch(url, requestOptions);
 
