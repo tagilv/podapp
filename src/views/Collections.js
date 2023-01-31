@@ -15,7 +15,7 @@ function Collections() {
   const [collections, setCollections] = useState([]);
   const [error, setError] = useState(null);
 
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(2);
 
   const fetchCollectionsAsync = async () => {
     try {
