@@ -29,7 +29,7 @@ function Collections() {
         method: "GET",
         headers: myHeaders,
         redirect: "follow",
-        mode: "no-cors",
+        // mode: "no-cors",
       };
       // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
       const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
