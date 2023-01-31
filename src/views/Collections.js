@@ -23,9 +23,9 @@ function Collections() {
       myHeaders.append("App", "Viktor_app");
       myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
       myHeaders.append("Accept", "application/json");
-      myHeaders.append("Access-Control-Allow-Origin", "*");
+      myHeaders.append("Access-Control-Allow-Headers", "*");
       myHeaders.append(
-        "Access-Control-Allow-Origin",
+        "Access-Control-Allow-Headers",
         "https://podapp-reactjsapp.vercel.app"
       );
 
