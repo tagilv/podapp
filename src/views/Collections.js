@@ -17,26 +17,22 @@ function Collections() {
 
   const [page, setPage] = useState(1);
 
-  const key = process.env.REACT_APP_KEY;
-
   const fetchCollectionsAsync = async () => {
     try {
       const myHeaders = new Headers();
       myHeaders.append("App", "Viktor_app");
-      // myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
-      myHeaders.append("Accept", "application/json");
-      myHeaders.append("Access-Control-Allow-Headers", "*");
-      // myHeaders.append("Access-Control-Allow-Origin", "http://localhost:3000");
-      // myHeaders.append("Access-Control-Allow-Credentials", "true");
+      myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
+      // myHeaders.append("Accept", "application/json");
+      // myHeaders.append("access-control-allow-headers", "*");
 
       const requestOptions = {
         method: "GET",
         headers: myHeaders,
         redirect: "follow",
-        // mode: "no-cors",
+        mode: "no-cors",
       };
       // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
-      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts/key=${process.env.REACT_APP_KEY}?page=${page}`;
+      const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
       console.log("url fetching from", url);
       const response = await fetch(url, requestOptions);
 
