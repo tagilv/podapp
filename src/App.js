@@ -18,8 +18,6 @@ import Chat from "./views/Chat";
 import { createTheme, ThemeProvider } from "@mui/material";
 
 function App() {
-  console.log("auth", auth);
-
   const theme = createTheme({
     typography: {
       fontFamily: ["Space Mono", "monospace"].join(","),
