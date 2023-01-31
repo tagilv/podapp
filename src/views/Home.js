@@ -24,7 +24,7 @@ function Home() {
         }}
       >
         {/* {user && <h2>Welcome back {user.displayName}</h2>} */}
-        <Typography variant="h3">Welcome to Randopod</Typography>
+        <Typography variant="h3">Welcome to randopod</Typography>
         {/* <Typography variant="h6">Your collection of random podcasts</Typography> */}
         <Box>
           <CardMedia component="img" image={podd} alt="podcast image" />
