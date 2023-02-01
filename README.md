@@ -16,7 +16,8 @@ Firebase
 MaterialUI
 </p>
 
-Deploying in the next couple of days
+<p>Deployed on Vercel:</p>
+https://podapp-reactjsapp.vercel.app/
 
 
 
