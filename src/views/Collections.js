@@ -20,7 +20,7 @@ function Collections() {
   const fetchCollectionsAsync = async () => {
     try {
       const myHeaders = new Headers();
-      myHeaders.append("App", "Viktor_app");
+      // myHeaders.append("App", "Viktor_app");
       myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
 
       const requestOptions = {
