@@ -20,7 +20,7 @@ function Collections() {
   const fetchCollectionsAsync = async () => {
     try {
       const myHeaders = new Headers();
-      myHeaders.append("App", "Viktor_app");
+      // myHeaders.append("App", "Viktor_app");
       myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
 
       const requestOptions = {
@@ -28,7 +28,7 @@ function Collections() {
         headers: myHeaders,
         redirect: "follow",
       };
-      const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
+      // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
       const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
       console.log("url fetching from", url);
       const response = await fetch(url, requestOptions);
