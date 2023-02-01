@@ -7,6 +7,7 @@ import Audioplayer from "../components/Audioplayer.js";
 
 function CollectionEpisodeDetails() {
   let params = useParams();
+  console.log("params", params);
 
   const location = useLocation();
   console.log("location", location);
@@ -22,7 +23,7 @@ function CollectionEpisodeDetails() {
   const fetchEpisodes = async () => {
     try {
       const myHeaders = new Headers();
-      myHeaders.append("App", "Viktor_app");
+      // myHeaders.append("App", "Viktor_app");
       myHeaders.append("X-ListenAPI-Key", process.env.REACT_APP_KEY);
 
       const requestOptions = {
@@ -30,14 +31,24 @@ function CollectionEpisodeDetails() {
         headers: myHeaders,
         redirect: "follow",
       };
-      const url = `https://jsonplaceholder.typicode.com/users`;
-      // const url = `https://cab-cors-anywhere.herokuapp.com/https://listen-api.listennotes.com/api/v2/podcasts/${location.state.podcastId}`;
+      const url = `https://listen-api.listennotes.com/api/v2/podcasts/${location.state.podcastId}`;
       const response = await fetch(url, requestOptions);
-      console.log("response", response);
-      const result = await response.json();
-      console.log("result", result);
-      setEpisodes(dataFetchTwo.episodes);
-      // setEpisodes(result.episodes);
+
+      console.log(location.state.podcastId);
+      console.log("ind podcasts response", response);
+
+      if (response.ok) {
+        const result = await response.json();
+        setEpisodes(result.episodes);
+      } else {
+        const res = await fetch(`/api/podcasts/${individualPodcastId}.json`);
+        console.log("individualPodcastId", individualPodcastId);
+        console.log("res from data", res);
+        const data = await res.json();
+        console.log(data);
+
+        setEpisodes(data.episodes);
+      }
     } catch (error) {
       console.log(error);
     }

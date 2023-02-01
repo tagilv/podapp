@@ -28,20 +28,20 @@ function Collections() {
         headers: myHeaders,
         redirect: "follow",
       };
-      // const url = `https://jsonplaceholder.typicode.com/todos/${page}`;
       const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
       console.log("url fetching from", url);
       const response = await fetch(url, requestOptions);
 
-      const result = await response.json();
-      console.log("result", result);
-      setCollections(result.curated_lists);
-
-      // setCollections(dataFetchOne.curated_lists);
-      // setPage(result);
-      console.log("page>", page);
-
-      // console.log("dataFetchOne", dataFetchOne);
+      console.log("response", response);
+      if (response.ok) {
+        const result = await response.json();
+        console.log("result", result);
+        setCollections(result.curated_lists);
+      } else {
+        const res = await fetch("/api/Collections/response.json");
+        const data = await res.json();
+        setCollections(data.curated_lists);
+      }
     } catch (error) {
       console.log(error);
     }
