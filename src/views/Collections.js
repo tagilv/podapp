@@ -36,7 +36,6 @@ function Collections() {
       const result = await response.json();
       console.log("result", result);
       setCollections(result.curated_lists);
-      setPage(result);
 
       // setCollections(dataFetchOne.curated_lists);
       // setPage(result);
