@@ -4,7 +4,6 @@ import {
   collection,
   deleteDoc,
   doc,
-  getDocs,
   onSnapshot,
   orderBy,
   query,
@@ -30,17 +29,13 @@ function Chat() {
           id: doc.id,
           ...doc.data(),
         };
-        // console.log("doc.id>>", doc.id);
-        // myMessages.push(doc.data());
         myMessages.push(msgObject);
       });
       setChatMessages(myMessages);
-      console.log("chat messages", myMessages);
     });
   };
 
   const messageDate = (date) => {
-    // console.log("date", date.toString());
     return new Date(date.seconds * 1000).toLocaleString();
   };
 
@@ -55,18 +50,13 @@ function Chat() {
         date: new Date(),
         author: user.displayName,
       });
-      console.log("Document written with ID: ", docRef.id);
-      console.log(docRef.id);
     } catch (e) {
       console.error("Error adding document: ", e);
     }
-
-    console.log("message submitted>>", message);
   };
 
-  // recive the event
+  // Edit message to be implemented
   const handleEditMessage = async (e) => {
-    console.log(e.currentTarget.id);
     const docRef = doc(db, "Chat", e.currentTarget.id);
 
     await updateDoc(docRef, {
@@ -74,20 +64,8 @@ function Chat() {
     });
   };
 
-  // Need display input with current text and then ability to edit
-  // Input thats hidden that is being displayed ewhne clicking on edit
-  // curretn message text as value of input, edits the input and the sedns it, last button to cinfm to send, this is the onme that triggering the hedit message
-
-  // Comments
-  // have cusotm id and then  in the comments
-  // retirve the id when opening the podcast comments
-
   const handleDeleteMessage = async (e) => {
-    console.log("e.currentTarget", e.currentTarget.id);
     await deleteDoc(doc(db, "Chat", e.currentTarget.id));
-    console.log("e", e);
-    console.log("e.currentTarget", e.currentTarget);
-    console.log("e.target", e.target);
   };
 
   useEffect(() => {
@@ -114,7 +92,6 @@ function Chat() {
           chatMessages.map((message, index) => {
             return (
               <div key={index} style={{ backgroundColor: "lightgrey" }}>
-                {/* Id to the div that corresponds to message id  */}
                 <p>{message.author}</p>
                 <p>{message.text}</p>
                 <p>{messageDate(message.date)}</p>

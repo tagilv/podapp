@@ -44,10 +44,3 @@ function CollectionPodcastsDetails() {
 }
 
 export default CollectionPodcastsDetails;
-
-//Could go on line 8
-// let {
-//   state: {
-//     collection: { podcasts },
-//   },
-// } = useLocation();

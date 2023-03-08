@@ -1,15 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { dataFetchOne } from "../data/dataFetchOne.js";
 import Collection from "../components/Collection.js";
 import { Grid, Typography } from "@mui/material";
 import { Box, Container } from "@mui/system";
 import Hero from "../components/Header.js";
 import FirstPageIcon from "@mui/icons-material/FirstPage";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
-import style from "../style/style.css";
 
 function Collections() {
   const [collections, setCollections] = useState([]);
@@ -29,13 +25,11 @@ function Collections() {
         redirect: "follow",
       };
       const url = `https://listen-api.listennotes.com/api/v2/curated_podcasts?page=${page}`;
-      console.log("url fetching from", url);
+
       const response = await fetch(url, requestOptions);
 
-      console.log("response", response);
       if (response.ok) {
         const result = await response.json();
-        console.log("result", result);
         setCollections(result.curated_lists);
       } else {
         const res = await fetch("/api/Collections/response.json");
@@ -49,7 +43,6 @@ function Collections() {
 
   useEffect(() => {
     fetchCollectionsAsync();
-    // fetchCollections();
   }, [page]);
 
   return (
@@ -64,9 +57,7 @@ function Collections() {
         }}
       >
         <Hero />
-        <Typography variant="h6">
-          {/* This week's curated List of Podcasts! */}
-        </Typography>
+        <Typography variant="h6"></Typography>
         {collections ? (
           <Grid container spacing={2}>
             {collections.map((collection) => {
@@ -126,8 +117,3 @@ function Collections() {
 }
 
 export default Collections;
-
-// save for later
-
-// bgcolor: "#FFB49A",
-// bgcolor: "#FF4F79",

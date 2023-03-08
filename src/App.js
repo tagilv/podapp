@@ -11,8 +11,6 @@ import { AuthContextProvider } from "./context/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
 import TopNavbar from "./components/TopNavbar";
 import Login from "./views/Login";
-import { app } from "./config";
-import { auth } from "./config";
 import Register from "./views/Register";
 import Chat from "./views/Chat";
 import { createTheme, ThemeProvider } from "@mui/material";

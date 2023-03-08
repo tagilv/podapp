@@ -5,17 +5,13 @@ import useFavouritePodcasts from "../hooks/useFavouritePodcasts";
 import { Box, Typography } from "@mui/material";
 
 function Profile() {
-  // Thanks to useContext you can cinsume the info in user object
   const { user, checkUserLoginStatus } = useContext(AuthContext);
 
   useEffect(() => {
-    // getUserInformation()
     checkUserLoginStatus();
   }, []);
 
-  // Get the value of this using const favouritePodcast
   const favouritePodcasts = useFavouritePodcasts(user.uid);
-  // console.log("favouritePodcasts>>", favouritePodcasts);
 
   return (
     <>
